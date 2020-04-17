@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content>
     <meta name="keyword" content>
-    <link rel="shortcut icon" href="/hexo-theme-huxblog/img/favicon.ico">
+    <link rel="shortcut icon" href="/MsAbby.github.io/img/favicon.ico">
 
     <title>
         
@@ -17,19 +17,19 @@
         
     </title>
 
-    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/2020/04/16/Hexo安装发布上线/">
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/2020/04/16/Hexo安装发布上线/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/hexo-theme-huxblog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/MsAbby.github.io/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/hexo-theme-huxblog/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/MsAbby.github.io/css/hux-blog.min.css">
 
     <!-- 额外 CSS -->
-    <link rel="stylesheet" href="/hexo-theme-huxblog/css/resize.css">
+    <link rel="stylesheet" href="/MsAbby.github.io/css/resize.css">
 
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/hexo-theme-huxblog/css/highlight.css">
+    <link rel="stylesheet" href="/MsAbby.github.io/css/highlight.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -70,7 +70,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/hexo-theme-huxblog/">MsAbby&#39;s Blog</a>
+            <a class="navbar-brand" href="/MsAbby.github.io/">MsAbby&#39;s Blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,7 +83,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/hexo-theme-huxblog/">Home</a>
+                        <a href="/MsAbby.github.io/">Home</a>
                     </li>
 
                     
@@ -93,21 +93,21 @@
 
                         
                         <li>
-                            <a href="/hexo-theme-huxblog/archives/">Archives</a>
+                            <a href="/MsAbby.github.io/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/hexo-theme-huxblog/about/">About</a>
+                            <a href="/MsAbby.github.io/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/hexo-theme-huxblog/tags/">Tags</a>
+                            <a href="/MsAbby.github.io/tags/">Tags</a>
                         </li>
                         
                     
@@ -152,7 +152,7 @@
     <!-- Main Content -->
     
 <!-- Image to hack wechat -->
-<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 <!-- Post Header -->
@@ -168,9 +168,9 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/hexo-theme-huxblog/tags/#前端开发" title="前端开发">前端开发</a>
+                          <a class="tag" href="/MsAbby.github.io/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                          <a class="tag" href="/hexo-theme-huxblog/tags/#工具" title="工具">工具</a>
+                          <a class="tag" href="/MsAbby.github.io/tags/#工具" title="工具">工具</a>
                         
                     </div>
                     <h1>Hexo安装上线和发布</h1>
@@ -268,19 +268,23 @@
             <div class="coding">D:\blog>  hexo -v</div>
           </li>
           <li>
-            4、初始化博客：
+            4、初始化博客(必须是空文件)：
             <div class="coding">D:\blog>  hexo init</div>
           </li>
           <li>
-            5、生成静态文件：
+            5、安装局部hexo：
+            <div class="coding">D:\blog>  cnpm install hexo --save</div>
+          </li>
+          <li>
+            6、生成静态文件：
             <div class="coding">D:\blog>  hexo g</div>
           </li>
           <li>
-            6、启动服务器：
+            7、启动服务器：
             <div class="coding">D:\blog>  hexo server</div>
           </li>
           <li>
-            7、本地预览: loacalhost: 4000
+            8、本地预览: loacalhost: 4000
           </li>
           <li class="problem">
             <span>安装报错解决</span>
@@ -334,6 +338,11 @@
             <p style="padding-left: 15px">站点配置文件：文件根目录下的_config.yml</p>
             <p style="padding-left: 15px">主题配置文件：主题目录下的_config.yml</p>
             <div class="coding">
+              <p>server:</p>
+              <p style="padding-left: 25px">port: 5000</p>
+              <p style="padding-left: 25px">compress: true</p>  
+              <p style="padding-left: 25px">header: true</p>
+              <p>server:</p>
               <p>language: zh-Hans</p>
               <p>theme: huxblog</p>
               <p>deploy: </p>
@@ -364,6 +373,29 @@
             <p style="padding-left: 15px">b、静态文件： <span class="code">hexo generate （简写：hexo g ）</span></p>
             <p style="padding-left: 15px">c、启服务器： <span class="code">hexo server （简写：hexo s ）</span></p>
             <p style="padding-left: 15px">d、部署文件： <span class="code">hexo deploy （简写：hexo d）</span></p>
+          </li>
+          <li class="problem">
+            <span>发布报错解决</span>
+          </li>
+          <li>
+            <div class="coding" style="color: red">
+              <p>Usage: hexo command</p>
+              <p>commands</p>
+              <p style="padding-left: 12px">clean Remove...</p>
+              <p style="padding-left: 12px">config Get or Set ...</p>
+            </div>
+          </li>
+          <li class="resolve">
+            ● method1 ：cnpm install hexo-server --save再执行 hexo generate
+          </li>
+          <li>
+            <div class="coding" style="color: red">
+              <p>hexo 部署到 github 上，css、js 文件加载不出来</p>
+            </div>
+          </li>
+          <li class="resolve">
+            ● method1 ：站点配置文件的 root 后面写你 github 仓库的名字，前后斜杠都不能省！
+            <p><span class="code">root: /github 仓库的名字/</span></p>
           </li>
           <li>
             6、组合命令发布：
@@ -413,12 +445,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/hexo-theme-huxblog/2020/04/17/nodeJs/" data-toggle="tooltip" data-placement="top" title="NodeJs学习">&larr; Previous Post</a>
+                            <a href="/MsAbby.github.io/2020/04/17/nodeJs/" data-toggle="tooltip" data-placement="top" title="NodeJs学习">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/hexo-theme-huxblog/2015/07/09/js-module-7day/" data-toggle="tooltip" data-placement="top" title="Example Post using Keynote Layout">Next Post &rarr;</a>
+                            <a href="/MsAbby.github.io/2015/07/09/js-module-7day/" data-toggle="tooltip" data-placement="top" title="Example Post using Keynote Layout">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -448,12 +480,12 @@
                 
                 <section>
                     <!-- no hr -->
-                    <h5><a href="/hexo-theme-huxblog/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="/MsAbby.github.io/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/hexo-theme-huxblog/tags/#前端开发" title="前端开发">前端开发</a>
+                          <a class="tag" href="/MsAbby.github.io/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                          <a class="tag" href="/hexo-theme-huxblog/tags/#工具" title="工具">工具</a>
+                          <a class="tag" href="/MsAbby.github.io/tags/#工具" title="工具">工具</a>
                         
                     </div>
                 </section>
@@ -637,13 +669,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="/hexo-theme-huxblog/js/jquery.min.js"></script>
+<script src="/MsAbby.github.io/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/hexo-theme-huxblog/js/bootstrap.min.js"></script>
+<script src="/MsAbby.github.io/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/hexo-theme-huxblog/js/hux-blog.min.js"></script>
+<script src="/MsAbby.github.io/js/hux-blog.min.js"></script>
 
 
 <!-- async load function -->
@@ -681,7 +713,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+        async("http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -745,7 +777,7 @@
 
 
 <!-- Image to hack wechat -->
-<img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<img src="http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
