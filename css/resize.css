@@ -1,3 +1,16 @@
+@media (min-width: 1400px){
+  .container {
+    width: 1400px;
+  }
+}
+
+@media (min-width: 768px) {
+  .post-container {
+      padding-right: 0;
+      padding-left: 0;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .post-content-preview {
     font-style: normal;
@@ -131,4 +144,14 @@ h4 a {
   color: #ff502c;
   font-size: 12px;
   padding: 4px 10px;
+}
+
+.chaper .blockquote {
+  padding: 20px;
+  background-color: rgb(238, 240, 241);
+  border-left: 6px solid #ced1d3;
+  color: #696969;
+  font-size: 13px;
+  padding: 10px 10px;
+  margin: 25px;
 }
