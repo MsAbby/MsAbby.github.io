@@ -9,27 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content>
     <meta name="keyword" content>
-    <link rel="shortcut icon" href="/MsAbby.github.io/img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
     <title>
         
-          NodeJs学习 - MsAbby的博客
+          NodeJs学习 - MsAbby
         
     </title>
 
-    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/2020/04/17/nodeJs/">
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2020/04/17/nodeJs/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/MsAbby.github.io/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/MsAbby.github.io/css/hux-blog.min.css">
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
     <!-- 额外 CSS -->
-    <link rel="stylesheet" href="/MsAbby.github.io/css/resize.css">
+    <link rel="stylesheet" href="/css/resize.css">
 
     <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/MsAbby.github.io/css/highlight.css">
+    <link rel="stylesheet" href="/css/highlight.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
@@ -70,7 +70,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/MsAbby.github.io/">MsAbby&#39;s Blog</a>
+            <a class="navbar-brand" href="/">MsAbby&#39;s Blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,7 +83,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/MsAbby.github.io/">Home</a>
+                        <a href="/">Home</a>
                     </li>
 
                     
@@ -93,21 +93,21 @@
 
                         
                         <li>
-                            <a href="/MsAbby.github.io/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/MsAbby.github.io/about/">About</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/MsAbby.github.io/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -152,7 +152,7 @@
     <!-- Main Content -->
     
 <!-- Image to hack wechat -->
-<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 <!-- Post Header -->
@@ -168,9 +168,9 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/MsAbby.github.io/tags/#前端开发" title="前端开发">前端开发</a>
+                          <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                          <a class="tag" href="/MsAbby.github.io/tags/#语言" title="语言">语言</a>
+                          <a class="tag" href="/tags/#语言" title="语言">语言</a>
                         
                     </div>
                     <h1>NodeJs学习</h1>
@@ -195,8 +195,9 @@
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
+                <div class="markdown-bg">
 
-                <h1 id="nodeJs"><a href="#nodeJs" class="headerlink" title="nodeJs"></a>nodeJs</h1><blockquote>
+                  <h1 id="nodeJs"><a href="#nodeJs" class="headerlink" title="nodeJs"></a>nodeJs</h1><blockquote>
 <p>背景：</p>
 <p>1、nodeJS是单线程非阻塞I / O</p>
 <p>2、nodejs运行环境是V8引擎，性能好，</p>
@@ -238,6 +239,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> rs = fs.createReadStream(<span class="string">"aa.png"</span>);</span><br><span class="line"><span class="keyword">let</span> ws = fs.createWriteStream(<span class="string">"bb.png"</span>);</span><br><span class="line">rs.pipe(ws); <span class="comment">// 创建一个管道，流从r端到w端</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取失败</span></span><br><span class="line">rs.on(<span class="string">"error"</span>, ex =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 读取完成</span></span><br><span class="line">rs.on(<span class="string">"end"</span>, () =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 写入失败</span></span><br><span class="line">ws.on(<span class="string">"error"</span>, ex =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 写入完成</span></span><br><span class="line">ws.on(<span class="string">"finish"</span>, () =&gt; &#123;&#125;);</span><br></pre></td></tr></table></figure>
 <h4 id="5、url"><a href="#5、url" class="headerlink" title="5、url"></a>5、url</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="comment">// 想要解析`query`，可以多传一个参数</span></span><br><span class="line"><span class="keyword">let</span> jd_url = <span class="string">"https:www.baidu.com?keyword=11&amp;bb=22"</span>;</span><br><span class="line"></span><br><span class="line">str = url.parse(jd_url, <span class="literal">true</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// 对query解析</span></span><br></pre></td></tr></table></figure>
 <h4 id="6、path"><a href="#6、path" class="headerlink" title="6、path"></a>6、path</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">let</span> file_name = <span class="string">"./images/png/aa.png"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(path.dirname(file_name)); <span class="comment">// 文件路径 ./images/png</span></span><br><span class="line"><span class="built_in">console</span>.log(path.basename(file_name)); <span class="comment">// aa.png</span></span><br><span class="line"><span class="built_in">console</span>.log(path.extname(file_name)); <span class="comment">// .png</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件信息 &#123;root: "", dir: "./images/png", base: "小明.png", ext: ".png", name: "小明"&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(path.parse(file_name)); <span class="comment">// 这个经常使用</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(path.resolve()); <span class="comment">// 当前文件所在文件夹绝对路径</span></span><br><span class="line"><span class="built_in">console</span>.log(path.resolve(file_name)); <span class="comment">// 文件的绝对路径</span></span><br></pre></td></tr></table></figure>
+                </div>
 
                 <hr>
 
@@ -246,12 +248,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/MsAbby.github.io/2020/04/17/1 Object.assign()/" data-toggle="tooltip" data-placement="top" title="Object">&larr; Previous Post</a>
+                            <a href="/2020/04/17/1 Object.assign()/" data-toggle="tooltip" data-placement="top" title="Object">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/MsAbby.github.io/2020/04/16/vue-cli 解读/" data-toggle="tooltip" data-placement="top" title="vue-cli 解读">Next Post &rarr;</a>
+                            <a href="/2020/04/16/vue-cli 解读/" data-toggle="tooltip" data-placement="top" title="vue-cli 解读">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -295,12 +297,12 @@
                 
                 <section>
                     <!-- no hr -->
-                    <h5><a href="/MsAbby.github.io/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/MsAbby.github.io/tags/#前端开发" title="前端开发">前端开发</a>
+                          <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                          <a class="tag" href="/MsAbby.github.io/tags/#语言" title="语言">语言</a>
+                          <a class="tag" href="/tags/#语言" title="语言">语言</a>
                         
                     </div>
                 </section>
@@ -484,13 +486,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="/MsAbby.github.io/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/MsAbby.github.io/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/MsAbby.github.io/js/hux-blog.min.js"></script>
+<script src="/js/hux-blog.min.js"></script>
 
 
 <!-- async load function -->
@@ -528,7 +530,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/js/jquery.tagcloud.js",function(){
+        async("http://kaijun.rocks/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
@@ -614,7 +616,7 @@
      * Doc: https://github.com/davist11/jQuery-One-Page-Nav
      * Fork by Hux to support padding
      */
-    async("/MsAbby.github.io/js/jquery.nav.js", function () {
+    async("/js/jquery.nav.js", function () {
         $('.catalog-body').onePageNav({
             currentClass: "active",
             changeHash: !1,
@@ -636,7 +638,7 @@
 
 
 <!-- Image to hack wechat -->
-<img src="http://kaijun.rocks/hexo-theme-huxblog/MsAbby.github.io/img/icon_wechat.png" width="0" height="0" />
+<img src="http://kaijun.rocks/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
