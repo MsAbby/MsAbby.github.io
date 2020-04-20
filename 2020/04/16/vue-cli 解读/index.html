@@ -222,22 +222,26 @@
         </p>
         <ul class="ul-detail">
           <li>
-            1、打包路径：
-            <p> ● 默认，会假设是被部署在一个域名的根路径上，例如 https://www.my-app.com/</p>
-            <div class="coding"> 
+            <h6 style="font-size: 15px">1、打包路径：</h6>
+            <p style="padding-left: 20px; margin-bottom: 15px"> ● 默认，会假设是被部署在一个域名的根路径上，例如 https://www.my-app.com/</p>
+            <div class="coding" style="margin-left: 20px"> 
               <p>publicPath： '/ '</p>
             </div>
-            <p> ● 如果被部署在一个子路径上，例如 https://www.my-app.com/my-app/，则设置值如下，所有资源会被链接为相对路径</p>
-            <div class="coding"> 
+            <p style="padding-left: 20px; margin-bottom: 15px"> ● 部署在一个子路径上，例如 https://www.my-app.com/my-app/，则设置值如下，所有资源会被链接为相对路径</p>
+            <div class="coding" style="margin-left: 20px"> 
               <p>publicPath： / my-app / 或 ' ' 或 './ '</p>
             </div>
           </li>
           <li>
-            2、配置位置：
-            <p><img src="/img/vue-cli/publicPath1.png" alt></p>
-            <p><img src="/img/vue-cli/publicPath2.png" alt></p>
-            <p><img src="/img/vue-cli/publicPath3.png" alt></p>
-            <p><img src="/img/vue-cli/publicPath4.png" alt></p>
+            <h6 style="font-size: 15px">2、配置位置调整(部署在子路径时)：</h6>
+            <p style="padding-left: 20px; color: #2871bb; font-weight: bolder; margin-bottom: 15px" ">● webpack.base.config.js： prod和test配置 ' ./ ' ， dev配置 ' / '</p>
+            <p style="padding-left: 20px; color: #2871bb; font-weight: bolder; margin-bottom: 15px">● config / index.js： test和build的assetsPublicPath 为 ' ./ ' ， dev.assetsPublicPath为 ' / '</p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath1.png" alt></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath2.png" alt></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath3.png" alt></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath4.png" alt></p>
+            <p style="padding-left: 20px; color: red; font-weight: bolder; margin-bottom: 15px">●注意： 若用到elementUI的字体路径找不到， 需要utils.js中配置publicPath<span></span></p>
+            <p style="padding-left: 20px; margin-right: 100px"><img src="/img/vue-cli/publicPath5.png" alt></p>
           </li>
           <li class="problem">
             <span>publicPath以下情况不建议使用相对路径</span>
