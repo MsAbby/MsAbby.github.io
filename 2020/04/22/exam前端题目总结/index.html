@@ -201,10 +201,13 @@
 
                   <h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><ul>
 <li>&lt;img标签&gt; alt和title同时设置的时候，title作为图片的替代文字出现，alt是图片的解释文字。</li>
+<li>&lt;i、em标签&gt;都表示斜体，区别<code>&lt;em&gt;</code>表示强调、可以被设备识别，<code>&lt;i&gt;</code>单纯表示斜体、不能被识别。</li>
 <li>&lt;audio标签&gt; 定义声音，比如音乐或其他音频流。</li>
 <li>&lt;canvas标签&gt; 定义图形，比如图表和其他图像。</li>
 <li>&lt;menu标签&gt; 定义命令的列表或菜单。用于上下文菜单、工具栏以及用于列出表单控件和命令。</li>
 <li>&lt;command标签&gt; 可以定义命令按钮，比如单选按钮、复选框或按钮。</li>
+<li>&lt;pre标签&gt; 定义预格式文本，保持文本原有的格式。</li>
+<li>&lt;meta标签&gt; 可提供有关页面的元信息，位于文档的头部，不包含任何内容。</li>
 <li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">浏览器模式<span><ul>
 <li>浏览器模式有两种呈现模式：<code>标准模式</code>和<code>混杂模式</code>。在标准模式中，浏览器根据规范呈现页面；在混杂模式中，页面以一种比较宽松的向后兼容的方式显示。</li>
 </ul>
@@ -214,18 +217,23 @@
 <li>DOCTYPE 不存在或格式不正确会导致文档以<code>兼容模式</code>呈现。</li>
 </ul>
 </span></span></li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">元素继承</span><ul>
+<li>所有元素可继承：visibility和cursor。</li>
+<li>内联元素可继承：letter-spacing、word-spacing、white-space、line-height、<code>color</code>、<code>font</code>、<code>font-family</code>、<code>font-size</code>、font-style、font-variant、font-weight、text-decoration、text-transform、direction。</li>
+<li>终端块状元素可继承：text-indent和text-align。</li>
+<li>列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。</li>
+</ul>
+</li>
 </ul>
 <h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ul>
 <li>css属性<code>overflow</code>属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要，用户代理都会提供一种滚动机制。</li>
 <li>css属性<code>border: none</code>表示边框样式无, 浏览器不进行渲染，不占用内存。</li>
-<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">CSS Sprites<span><ul>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">CSS Sprites<span></span></span></li>
 <li>它允许将一个页面涉及到的所有零星图片都包含到一张大图中。</li>
 <li>利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，避免图片载入缓慢的现象。</li>
 <li>它能减少图片的字节。</li>
 <li>它能很好地减少网页的http请求，从而大大的提高页面的性能。</li>
 <li>但是：图片合并麻烦、图片适应性差、图片定位繁琐、可维护性差。</li>
-</ul>
-</span></span></li>
 </ul>
 <h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><ul>
 <li><code>onload方法</code> 是某个页面的css js html 文档结构和图像被完全加载。</li>
@@ -235,6 +243,14 @@
 <li>flash和js通过<code>ExternalInterface</code>类进行的交互。</li>
 <li><code>call（）</code>，第一个参数是 运行函数的作用域，其余传递给函数的参数必须逐个列举出来。</li>
 <li><code>apply（）</code>，第一个参数是 运行函数的作用域 ，另一个参数是参数数组, 可以是Array实例或arguments对象。</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">继承</span><ul>
+<li>6种方式： <code>原型链</code>继承、借用<code>构造函数</code>继承、<code>组合</code>继承、<code>原型式</code>继承、<code>寄生式</code>继承、<code>寄生组合式</code>继承。</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">异步编程模式</span> <ul>
+<li>4种方法： <code>回调函数</code>、<code>事件监听</code>、<code>发布/订阅</code>、<code>Promises</code>对象：。</li>
+</ul>
+</li>
 </ul>
 <h4 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h4><ul>
 <li>只要 协议 、 域名 、 端口 有任何一个 不同, 都被当作是 不同 的域</li>
