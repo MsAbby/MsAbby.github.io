@@ -228,12 +228,14 @@
 <h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ul>
 <li>css属性<code>overflow</code>属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要，用户代理都会提供一种滚动机制。</li>
 <li>css属性<code>border: none</code>表示边框样式无, 浏览器不进行渲染，不占用内存。</li>
-<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">CSS Sprites<span></span></span></li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">CSS Sprites<span><ul>
 <li>它允许将一个页面涉及到的所有零星图片都包含到一张大图中。</li>
 <li>利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，避免图片载入缓慢的现象。</li>
 <li>它能减少图片的字节。</li>
 <li>它能很好地减少网页的http请求，从而大大的提高页面的性能。</li>
 <li>但是：图片合并麻烦、图片适应性差、图片定位繁琐、可维护性差。</li>
+</ul>
+</span></span></li>
 </ul>
 <h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><ul>
 <li><code>onload方法</code> 是某个页面的css js html 文档结构和图像被完全加载。</li>
@@ -257,6 +259,10 @@
 <li>js可以使用jsonp进行跨域</li>
 <li>通过修改document.domain来跨子域</li>
 <li>使用window.name来进行跨域</li>
+</ul>
+<h4 id="栈内存和堆内存的区分"><a href="#栈内存和堆内存的区分" class="headerlink" title="栈内存和堆内存的区分"></a>栈内存和堆内存的区分</h4><ul>
+<li><code>栈内存</code>: 存储<code>基本类型</code>的变量，包括Boolean、Number、String、Undefined、Null…以及<code>引用数据类型变量的指针</code>,像一个线性排列的空间，每个小单元大小基本相等，栈内存中的变量一般都是已知大小或者有范围上限的，算作一种简单存储</li>
+<li><code>堆内存</code>：存储<code>引用数据类型</code>值的变量，堆内存存储的对象类型数据对于大小这方面，一般都是未知的<br><img src="/img/knowledge/stack.jpg" width="60%"></li>
 </ul>
 
                 </div>
