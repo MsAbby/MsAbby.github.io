@@ -261,8 +261,24 @@
 <li>使用window.name来进行跨域</li>
 </ul>
 <h4 id="栈内存和堆内存的区分"><a href="#栈内存和堆内存的区分" class="headerlink" title="栈内存和堆内存的区分"></a>栈内存和堆内存的区分</h4><ul>
-<li><code>栈内存</code>: 存储<code>基本类型</code>的变量，包括Boolean、Number、String、Undefined、Null…以及<code>引用数据类型变量的指针</code>,像一个线性排列的空间，每个小单元大小基本相等，栈内存中的变量一般都是已知大小或者有范围上限的，算作一种简单存储</li>
-<li><code>堆内存</code>：存储<code>引用数据类型</code>值的变量，堆内存存储的对象类型数据对于大小这方面，一般都是未知的<br><img src="/img/knowledge/stack.jpg" width="60%"></li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">栈(stack)和堆（heap）</span><ul>
+<li>stack为<code>自动分配</code>的内存空间，它由系统自动释放；而heap则是<code>动态分配</code>的内存，大小也不一定会自动释放</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">数据类型</span><ul>
+<li>基本数据类型：Number、String、Boolean、Null、Undefined、Symbol（ES6）、Null，可以直接操作保存在变量中的实际值。</li>
+<li>引用数据类型：Object（在JS中除了基本数据类型以外的都是对象，数组是对象，函数是对象，正则表达式是对象）。</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;"><code>栈内存</code></span><ul>
+<li>存储<code>基本数据类型</code>的变量以及<code>引用数据数据类型变量的指针</code>,像一个线性排列的空间，每个小单元大小基本相等，内存空间大小可以分配，数据大小确定，按值存放，按值访问。</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;"><code>堆内存</code></span><ul>
+<li>存储<code>引用数据类型</code>值的变量，每个空间大小不一样，要根据情况进行特定的配置<br><img src="/img/knowledge/stack.jpg" width="60%"></li>
+</ul>
+</li>
+<li><span style="color: #ff502c;border-bottom: 1px solid #ff502c;"><code>浅拷贝</code></span></li>
 </ul>
 
                 </div>
