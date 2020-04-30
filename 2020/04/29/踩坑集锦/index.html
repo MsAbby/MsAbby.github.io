@@ -13,11 +13,11 @@
 
     <title>
         
-          NodeJs学习 - MsAbby
+          问题集锦 - MsAbby
         
     </title>
 
-    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2020/04/17/nodeJs/">
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2020/04/29/踩坑集锦/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -165,7 +165,7 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/img/banner6.jpg')
+        background-image: url('/img/banner2.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -177,14 +177,16 @@
                         
                           <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                          <a class="tag" href="/tags/#语言" title="语言">语言</a>
+                          <a class="tag" href="/tags/#语法" title="语法">语法</a>
+                        
+                          <a class="tag" href="/tags/#HTML/CSS" title="HTML/CSS">HTML/CSS</a>
                         
                     </div>
-                    <h1>NodeJs学习</h1>
+                    <h1>问题集锦</h1>
                     <h2 class="subheading">Whether:sunny / Mood:am-normal, pm-normal / Especially:0</h2>
                     <span class="meta">
                         Posted by lsm on
-                        2020-04-17
+                        2020-04-29
                     </span>
                 </div>
             </div>
@@ -204,53 +206,48 @@
                 post-container">
                 <div class="markdown-bg">
 
-                  <h2 id="nodeJs"><a href="#nodeJs" class="headerlink" title="nodeJs"></a>nodeJs</h2><blockquote>
-<p>背景：</p>
-<p>1、nodeJS是单线程非阻塞 I / O</p>
-<p>2、nodejs运行环境是V8引擎，性能好，</p>
-<p>3、利用事件驱动机制</p>
-<p>4、学习成本低：网站开发、即时通信、小程序开发、跨平台开发等； 不适用于银行、证券等方向</p>
+                  <div class="tips">前言:<br>  最近项目准备发生产了，遇到了一系列问题，找问题真的是一件很痛苦的活儿<br>  小小总结一下吧。。。<br></div>
+
+<h4 id="关于publicPath"><a href="#关于publicPath" class="headerlink" title="关于publicPath"></a>关于publicPath</h4><blockquote>
+<p>文章有一篇是专门讲这个的，问题原因是不懂 <code>&#39;./&#39;， &#39;/&#39;</code>的区别<br>直到这次，起因是：后台的接口没有api开头，前端地址和后台接口用的是一个域名，<br>以前运维通过 <code>是否api开头</code>来区分前端合后端， 现在没有咋怎呢？？(终于明白以前为啥接口都是<code>api开头的</code>)<br>于是运维在前端打包的文件dist外面包裹了一层文件，名叫<code>web</code>，<code>属于部署在一个子路径上</code><br>但是打包后还是访问不到， 问题就出在了 <code>publicPath</code>上了</p>
 </blockquote>
-<h5 id="1、单线程"><a href="#1、单线程" class="headerlink" title="1、单线程"></a>1、单线程</h5><ul>
-<li>优点：<ul>
-<li>高性能：不用反复创建线程、销毁线程，速度快，内存占用小</li>
-<li>安全：不用担心同一变量同时被多个线程进行读写而造成的程序崩溃</li>
-</ul>
-</li>
-<li>劣势：<ul>
-<li>适合小型项目开发，一旦一个事件阻塞了I/O，整个nodeJs都会瘫痪</li>
+<h5 id="问题1：-部署在一个子路径上"><a href="#问题1：-部署在一个子路径上" class="headerlink" title="问题1： 部署在一个子路径上"></a>问题1： 部署在一个子路径上</h5><ul>
+<li><p>所以，publicPath 要改为<code>&#39;./&#39;</code></p></li>
+<li>注意：<ul>
+<li>生产环境和测试环境 改为 ‘./‘</li>
+<li>测试环境依旧为 ‘/‘ (不然本地运行会出错)</li>
 </ul>
 </li>
 </ul>
-<h5 id="2、单线程非阻塞I-O"><a href="#2、单线程非阻塞I-O" class="headerlink" title="2、单线程非阻塞I/O"></a>2、单线程非阻塞I/O</h5><ul>
-<li>特点：非阻塞I/O是在执行了数据库访问代码后立即执行后续的代码，把数据库返回的结果放在回调函数中，当函数执行完毕自动获取该结果，这就提高执行效率</li>
-</ul>
-<h5 id="3、-事件驱动"><a href="#3、-事件驱动" class="headerlink" title="3、 事件驱动"></a>3、 事件驱动</h5><ul>
-<li>特点： 将事件放入一个事件环中，不停的查看事件环来让回调函数（可能是磁盘I/O，网络通信、数据库查询等操作）对其进行处理。</li>
-</ul>
-<h5 id="4、浏览器工作原理"><a href="#4、浏览器工作原理" class="headerlink" title="4、浏览器工作原理"></a>4、浏览器工作原理</h5><ul>
-<li><p>客户端： 发送请求 （性能无法控制）</p>
-</li>
-<li><p>服务端： 接受请求，通过I/O从数据库数据 （性能控制有 “ 服务器宽带 ” 和CDN加速）</p>
-</li>
-<li><p>服务端： 数据传输给客户端（算法优化和多线程优化）</p>
-</li>
-<li><p>客户端： 数据解析，渲染</p>
+<h5 id="问题2：部署成功后elementUI的字体找不到路径"><a href="#问题2：部署成功后elementUI的字体找不到路径" class="headerlink" title="问题2：部署成功后elementUI的字体找不到路径"></a>问题2：部署成功后elementUI的字体找不到路径</h5><ul>
+<li><p>更改 build/utils下面的publicPath</p></li>
+<li><p><code>publicPath: &#39;../../&#39;</code></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">if</span> (options.extract) &#123;</span><br><span class="line">  <span class="selector-tag">return</span> <span class="selector-tag">ExtractTextPlugin</span><span class="selector-class">.extract</span>(&#123;</span><br><span class="line">    <span class="attribute">use</span>: loaders,</span><br><span class="line">    <span class="attribute">fallback</span>: <span class="string">'vue-style-loader'</span>,</span><br><span class="line">    <span class="attribute">publicPath</span>: <span class="string">'../../'</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="NodeJ工作"><a href="#NodeJ工作" class="headerlink" title="NodeJ工作"></a>NodeJ工作</h2><h5 id="1、导入http"><a href="#1、导入http" class="headerlink" title="1、导入http"></a>1、导入http</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br></pre></td></tr></table></figure>
-<h5 id="2、创建服务器"><a href="#2、创建服务器" class="headerlink" title="2、创建服务器"></a>2、创建服务器</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个服务器</span></span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 发送http头部</span></span><br><span class="line">    response.writeHead(<span class="number">200</span>,  &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span> &#125;)</span><br><span class="line">    <span class="comment">// 告诉浏览器响应结束</span></span><br><span class="line">    response.end()</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 服务器启动并监听指定端口</span></span><br><span class="line">server.listen(<span class="number">8080</span>);</span><br><span class="line"><span class="comment">// 终端打印信息</span></span><br><span class="line"><span class="built_in">console</span>.log(“Server running at http:<span class="comment">//127.0.0.1:8888”);</span></span><br></pre></td></tr></table></figure>
-<h5 id="3、运行"><a href="#3、运行" class="headerlink" title="3、运行"></a>3、运行</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br></pre></td></tr></table></figure>
-<h5 id="4、fs文件系统"><a href="#4、fs文件系统" class="headerlink" title="4、fs文件系统"></a>4、fs文件系统</h5><ul>
-<li>传统方法： 先把数据缓存到内存中，再回调，比较浪费内存，对大文件不友好，因此用流好一些</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">// 1、读取文件</span></span><br><span class="line">fs.readFile(<span class="string">"文件名"</span>, (ex, data) =&gt; &#123; &#125;);</span><br><span class="line"><span class="comment">// 2、创建文件</span></span><br><span class="line">fs.writeFile(<span class="string">"文件名"</span>, data, ex =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 3、追加文件</span></span><br><span class="line">fs.appendFile(<span class="string">"文件名"</span>, data, ex =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// ps: data是buffer类型，内置了：toString() 和 toJSON()</span></span><br></pre></td></tr></table></figure>
+<h4 id="cross-env"><a href="#cross-env" class="headerlink" title="cross-env"></a>cross-env</h4><blockquote>
+<p>cross-env能跨平台地设置及使用环境变量</p>
+</blockquote>
 <ul>
-<li>流方法</li>
+<li><p>step1 安装：<code>npm install cross-env --save-dev</code></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"></span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --inline --progress --config build/webpack.dev.conf.js"</span>,</span><br><span class="line">  <span class="string">"start"</span>: <span class="string">"npm run dev"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"cross-env NODE_ENV=production node build/build.js"</span>,</span><br><span class="line">  <span class="string">"build-test"</span>: <span class="string">"cross-env NODE_ENV=test node build/build.js"</span>    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>step2 新建测试文件：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、新建： webpack<span class="number">.</span><span class="keyword">test</span><span class="number">.</span>conf<span class="number">.</span><span class="keyword">js</span>（和webpack<span class="number">.</span>prod<span class="number">.</span>conf<span class="number">.</span><span class="keyword">js</span>保持一致）</span><br><span class="line"><span class="number">2</span>、新建： <span class="keyword">test</span><span class="number">.</span>env<span class="number">.</span><span class="keyword">js</span></span><br><span class="line"><span class="number">3</span>、config / index<span class="number">.</span><span class="keyword">js</span>中： 添加<span class="keyword">test</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> rs = fs.createReadStream(<span class="string">"aa.png"</span>);</span><br><span class="line"><span class="keyword">let</span> ws = fs.createWriteStream(<span class="string">"bb.png"</span>);</span><br><span class="line">rs.pipe(ws); <span class="comment">// 创建一个管道，流从r端到w端</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取失败</span></span><br><span class="line">rs.on(<span class="string">"error"</span>, ex =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 读取完成</span></span><br><span class="line">rs.on(<span class="string">"end"</span>, () =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 写入失败</span></span><br><span class="line">ws.on(<span class="string">"error"</span>, ex =&gt; &#123;&#125;);</span><br><span class="line"><span class="comment">// 写入完成</span></span><br><span class="line">ws.on(<span class="string">"finish"</span>, () =&gt; &#123;&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="5、url"><a href="#5、url" class="headerlink" title="5、url"></a>5、url</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="comment">// 想要解析`query`，可以多传一个参数</span></span><br><span class="line"><span class="keyword">let</span> jd_url = <span class="string">"https:www.baidu.com?keyword=11&amp;bb=22"</span>;</span><br><span class="line"></span><br><span class="line">str = url.parse(jd_url, <span class="literal">true</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// 对query解析</span></span><br></pre></td></tr></table></figure>
-<h5 id="6、path"><a href="#6、path" class="headerlink" title="6、path"></a>6、path</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">let</span> file_name = <span class="string">"./images/png/aa.png"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(path.dirname(file_name)); <span class="comment">// 文件路径 ./images/png</span></span><br><span class="line"><span class="built_in">console</span>.log(path.basename(file_name)); <span class="comment">// aa.png</span></span><br><span class="line"><span class="built_in">console</span>.log(path.extname(file_name)); <span class="comment">// .png</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件信息 &#123;root: "", dir: "./images/png", base: "小明.png", ext: ".png", name: "小明"&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(path.parse(file_name)); <span class="comment">// 这个经常使用</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(path.resolve()); <span class="comment">// 当前文件所在文件夹绝对路径</span></span><br><span class="line"><span class="built_in">console</span>.log(path.resolve(file_name)); <span class="comment">// 文件的绝对路径</span></span><br></pre></td></tr></table></figure>
+<h4 id="加载动态路由"><a href="#加载动态路由" class="headerlink" title="加载动态路由"></a>加载动态路由</h4><h5 id="问题1：-加载完后，页面空白或出现死循环"><a href="#问题1：-加载完后，页面空白或出现死循环" class="headerlink" title="问题1： 加载完后，页面空白或出现死循环"></a>问题1： 加载完后，页面空白或出现死循环</h5><blockquote>
+<p>动态加载 后台返回 的路由表<br>首先：无登录，直接加载动态路由<br>问题： 路由跳转时，地址栏路由正确，但是，页面是空白的，在路由前置守卫中beforeEach打印to参数，发现matched总为空<br>解决如下：条件一个判断<code>if (to.matched.length === 0){ } else { }</code></p>
+</blockquote>
+<h5 id="问题2：router-addRoutes-router-可能没反应"><a href="#问题2：router-addRoutes-router-可能没反应" class="headerlink" title="问题2：router.addRoutes([router]) 可能没反应"></a>问题2：router.addRoutes([router]) 可能没反应</h5><blockquote>
+<p>问题： router.addRoutes([router])后，打印<code>router参数</code>发现router.options.routes并没有增加<br>解决如下：在<code>router.addRoutes</code>之前加一个 <code>router.options.routes = 拼接好的完整路由</code></p>
+</blockquote>
+<pre><code><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// permission.js</span></span><br><span class="line">router.beforeEach(<span class="keyword">async</span>(to, <span class="keyword">from</span>, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">var</span> roles = <span class="string">'admin'</span></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (to.matched.length === <span class="number">0</span>) &#123;                     <span class="comment">// `就是加上这个判断，一切迎刃而解啦!!!!!!!!`</span></span><br><span class="line">    ----------------------------------------------------------------------------------------------</span><br><span class="line">      <span class="comment">// 刷新页面后,会重新触发action去获取路由的</span></span><br><span class="line">      <span class="keyword">if</span> (store.state.permission.routes.length === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 判断是否需要登录,同时拿后台返回的路由表</span></span><br><span class="line">        <span class="keyword">const</span> asyncProductRouter = <span class="keyword">await</span> isLogin()</span><br><span class="line">        <span class="keyword">const</span> combineRouter = <span class="keyword">await</span> filterAsyncRouter(asyncProductRouter)</span><br><span class="line">        <span class="keyword">const</span> accessRoutes = <span class="keyword">await</span> store.dispatch(<span class="string">'permission/generateRoutes'</span>,</span><br><span class="line">        &#123; roles: roles, asyncRoutes: combineRouter &#125;)</span><br><span class="line">        router.options.routes = router.options.routes.concat(accessRoutes) <span class="comment">// `这个也很重要啊啊啊啊!!!!!!`</span></span><br><span class="line">        ------------------------------------------------------------------------------------------------</span><br><span class="line">        router.addRoutes(accessRoutes)</span><br><span class="line">        --------------------------------</span><br><span class="line">        next(&#123; ...to, replace: <span class="literal">true</span> &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      next()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    Message.error(error || <span class="string">'Has Error'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre><h5 id="问题3：路由component拼接出问题"><a href="#问题3：路由component拼接出问题" class="headerlink" title="问题3：路由component拼接出问题"></a>问题3：路由component拼接出问题</h5><blockquote>
+<p>问题： 后台返回的文件的路径是字符串，需要前端拼接成<code>componet的格式</code>,拼接完成后发现 <span style="color: red">Error: Cannot find module @/views/undefined’,</span> 懵的转圈圈<br>解决： 先将获取的路径参数 赋值给 一个变量; 再去拼接（我也不晓得为啥啊啊啊啊）<br><code>const component = item.children[i].component</code><br><code>component: resolve =&gt; require([&#39;@/views&#39; + component], resolve),</code></p>
+</blockquote>
+  <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">function</span> filterAsyncRouter(asyncRouterMap) &#123;</span><br><span class="line">  <span class="keyword">return</span> new Promise((resolve) =&gt; &#123;</span><br><span class="line">    const accessedRouters = asyncRouterMap.<span class="keyword">map</span>((<span class="type">item</span>) =&gt; &#123;</span><br><span class="line">      <span class="type">item</span> = Object.assign(&#123;&#125;, <span class="type">item</span>, &#123;</span><br><span class="line">        component: Container,                              // 这一句也很重要，后台是字符串 !!!!!!!!</span><br><span class="line">        ----------------------------------------------------------------------------------------</span><br><span class="line">        redirect: <span class="type">item</span><span class="built_in">.path</span> + <span class="string">'/'</span> + <span class="type">item</span>.children[<span class="number">0</span>]<span class="built_in">.path</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">if</span> (<span class="type">item</span>.children &amp;&amp; <span class="type">item</span>.children.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="type">item</span>.children.length; i++) &#123;</span><br><span class="line">          const component = <span class="type">item</span>.children[i].component     // 就是这一一句额外重要 !!!!!!!!</span><br><span class="line">          --------------------------------------------------------------------------------</span><br><span class="line">          <span class="type">item</span>.children[i] = Object.assign(&#123;&#125;, &#123;</span><br><span class="line">           <span class="built_in"> path</span>: <span class="type">item</span>.children[i]<span class="built_in">.path</span>,</span><br><span class="line">           <span class="built_in"> name</span>: <span class="type">item</span>.children[i]<span class="built_in">.name</span>,</span><br><span class="line">            component: resolve =&gt; require([<span class="string">'@/views'</span> + component], resolve),  // 开始拼接了 !!!!!!!!</span><br><span class="line">            ---------------------------------------------------------------------------------------</span><br><span class="line">            meta: &#123;</span><br><span class="line">              title: <span class="type">item</span>.children[i].meta.title,</span><br><span class="line">              activeMenu: <span class="type">item</span>.children[i].meta.activeMenu</span><br><span class="line">            &#125;,</span><br><span class="line">            hidden: <span class="type">item</span>.children[i].hidden</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">item</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    resolve(accessedRouters)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
                 </div>
 
                 <hr>
@@ -259,13 +256,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2020/04/17/Object/" data-toggle="tooltip" data-placement="top" title="Object">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2020/04/16/vue-cli publicPath 解读/" data-toggle="tooltip" data-placement="top" title="vue-cli publicPath解读">Next Post &rarr;</a>
+                            <a href="/2020/04/22/code编程/" data-toggle="tooltip" data-placement="top" title="code编程">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -314,7 +307,9 @@
                        
                           <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
                         
-                          <a class="tag" href="/tags/#语言" title="语言">语言</a>
+                          <a class="tag" href="/tags/#语法" title="语法">语法</a>
+                        
+                          <a class="tag" href="/tags/#HTML/CSS" title="HTML/CSS">HTML/CSS</a>
                         
                     </div>
                 </section>
@@ -354,8 +349,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2020/04/17/nodeJs/";
-    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2020/04/17/nodeJs/";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2020/04/29/踩坑集锦/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2020/04/29/踩坑集锦/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -406,8 +401,6 @@
     
     <!-- pagination -->
     <!-- <ul class="pager">
-    
-        <li class="previous"><a href="/">&larr;  next</a></li>
     
     
         <li class="next"><a href="/">prev  &rarr;</a></li>

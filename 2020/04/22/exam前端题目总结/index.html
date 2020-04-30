@@ -83,7 +83,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Home</a>
+                        <a href="/">首页</a>
                     </li>
 
                     
@@ -101,6 +101,13 @@
                         
                         <li>
                             <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/interview/">面试</a>
                         </li>
                         
                     
@@ -280,7 +287,7 @@
 </li>
 </ul>
 <h4 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h4><ul>
-<li>参考文档：<ul>
+<li>文章转载：<ul>
 <li><a href="https://www.cnblogs.com/c2016c/articles/9328725.html" target="_blank" rel="noopener">深浅拷贝1</a></li>
 <li><a href="https://juejin.im/post/5d0a48d86fb9a07ea803cf23" target="_blank" rel="noopener">深浅拷贝2</a></li>
 </ul>
@@ -372,6 +379,12 @@
 </blockquote>
 </li>
 </ul>
+<h4 id="原型-继承"><a href="#原型-继承" class="headerlink" title="原型 / 继承"></a>原型 / 继承</h4><ul>
+<li>构造函数：<ul>
+<li>定义： 构造函数本身就是一个函数，与普通函数没有任何区别，不过为了规范一般将其<code>首字母大写</code>。构造函数和普通函数的区别在于，使用 new 生成实例的函数就是构造函数，直接调用的就是普通函数。</li>
+</ul>
+</li>
+</ul>
 
                 </div>
 
@@ -412,8 +425,8 @@
                 catalog-container">
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    <h5 class="catalog-toggle">
+                      目录
                     </h5>
                     <ul class="catalog-body"></ul>
                 </div>
@@ -711,6 +724,7 @@
             l = $('<li class="'+n+'_nav"></li>').append(c);
             $(selector).append(l);
         });
+        
         return true;    
     }
 
