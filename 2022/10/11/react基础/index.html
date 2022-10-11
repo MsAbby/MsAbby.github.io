@@ -13,11 +13,11 @@
 
     <title>
         
-          react 项目报错 - MsAbby
+          react 基础1 - MsAbby
         
     </title>
 
-    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react 项目报错/">
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react基础/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -180,7 +180,7 @@
                           <a class="tag" href="/tags/#工具" title="工具">工具</a>
                         
                     </div>
-                    <h1>react 项目报错</h1>
+                    <h1>react 基础1</h1>
                     <h2 class="subheading">Whether:sunny / Mood:am-normal, pm-bad / Especially: 1</h2>
                     <span class="meta">
                         Posted by lsm on
@@ -216,193 +216,209 @@
 
 <body>
     <div class="bg">
-        <h2 class="title">less 支持的配置</h2>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 利用脚手架初始化项目</a><br>
+                <a href="#two">2. npx命令介绍</a><br>
+                <a href="#three">3. yarn命令介绍</a><br>
+                <a href="#four">4. 导入react</a><br>
+                <a href="#five">5. createElement()问题</a><br>
+                <a href="#six">6. JSX - jsx学习</a><br>
+                <a href="#seven">7.  JSX - 为什么脚手架可以使用jsx语法</a><br>
+                <a href="#eight">8.  JSX - jsx语法注意事项</a><br>
+                <a href="#nine">9.  JSX - jsx 嵌入js 表达式</a><br>
+                <a href="#ten">10.  JSX - jsx 条件渲染 、列表渲染 、 样式处理</a><br>
+            </div>
+            <div style="flex: 1;">
+                <a href="#eleven">11. 组件化</a><br>
+                <!-- <a href="#two">2. npx命令介绍</a><br/>
+                <a href="#three">3. yarn命令介绍</a><br/>
+                <a href="#four">4. 导入react</a><br/>
+                <a href="#five">5. createElement()问题</a><br/>
+                <a href="#six">6. jsx学习</a><br/>
+                <a href="#seven">7. 为什么脚手架可以使用jsx语法</a><br/>
+                <a href="#eight">8. jsx语法注意事项</a><br/>
+                <a href="#nine">9. jsx 嵌入js 表达式</a><br/>
+                <a href="#ten">10. sx 条件渲染 、列表渲染 、 样式处理</a><br/> -->
+            </div>
+          </div>
+        <h2 class="title"> I. 什么是react</h2>
 
-        react脚手架中， 默认支持的是 css 或sass/scss， 需要自己配置less
-        1. 执行命令 npm install eject, 如果
-
-        <h2 class="title">配置网络请求</h2>
-        1. 安装依赖 cnpm install axios <br>
-        2. 安配置网络请求文件 <br>
-        3. 配置路径地址文件 <br>
-
-        <h2 class="title">初始化样式</h2>
-        1. 初始化css样式文件 <br>
-        2. 引入字体图标 <br>
-
-        <h2 class="title">初始化路由文件</h2>
+        用于构建用户界面的javascript库<br>
+        起源于 facebook<br>
 
         <h4 class="detail-title">
-            <span id="one">报错1</span>
+            <span>特点</span>
         </h4>
+        1. 声明式： 只要描述结构，渲染ui过程由react来做的 <br>
+        2. 基于组件： 最重要 <br>
+        3. 学习一次，随处使用： 开发web应用、 开发移动端原生应用、 还有vr开发 <br>
+
+        <h2 class="title">II. react 基本使用</h2>
+
+        1. createElement <br>
         <ul class="ul-detail">
             <li>
                 <div class="coding">
-                    /node_modules/@types/react-router/index.d.ts TypeScript error in
-                    /node_modules/@types/react-router/index.d.ts(149,100):
-                    Type expected. TS1110<br>
-
-                    147 | ): match<params> | null;<br>
-                        148 | <br>
-                        149 | export type ExtractRouteOptionalParam<t extends string, u="string" | number boolean> = T
-                            extends `${infer Param}?`<br>
-                            | <br>
-                            150 | ? { [k in Param]?: U }<br>
-                            151 | : T extends `${infer Param}*`<br>
-                            152 | ? { [k in Param]?: U }<br>
-                </t></params></div>
+                    1. const title = React.<span style="color: yellow">createElement('p', {title: '属性'}, id: 'p1' )</span>
+                </div>
+                <p>第一个参数：要创建的react元素名称</p>
+                <p>第二个参数： 元素的属性（可以多个）</p>
+                <p>第三个参数及以后： 该元素的子节点</p>
+            </li>
+        </ul>
+        2. ReactDOM.render <br>
+        <ul class="ul-detail">
+            <li>
+                <div class="coding">
+                    <span style="color: yellow"> ReactDOM.render</span> (el, document.getElementById('root'))
+                </div>
+                <p>第一个参数：要创建的react元素名称</p>
+                <p>第二个参数： DOM对象， 用于渲染到页面中的位置</p>
             </li>
         </ul>
 
 
+        <h2 class="title">III. react 脚手架的使用</h2>
 
         <h4 class="detail-title">
-            <span id="one">报错2</span>
+            <span id="one">利用脚手架初始化项目</span>
         </h4>
-
         <ul class="ul-detail">
             <li>
-                <div class="coding">
-                    Error: Cannot find module 'react-dev-utils/getPublicUrlOrPath'
-                    Require stack:
-                    - /Users/lsm/Documents/01.study/react/first-react/config/paths.js
-                    - /Users/lsm/Documents/01.study/react/first-react/config/env.js
-                    - /Users/lsm/Documents/01.study/react/first-react/scripts/start.js<br>
+                1. 初始化项目： <span style="color: red">npx create-react-app my-app</span>
+            </li>
+            <li>
+                2. 启动项目：  <span style="color: red">npm start</span>
+            </li>
+        </ul>
 
-                    // 解决方案： npm install --save-dev react-dev-utils
+        <h4 class="detail-title">
+            <span id="two">npx命令介绍</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                1. 原先：  <span style="color: green">先全局安装脚手架（全局安装长时间不用没有意义）， 才能使用脚手架提供的命令初始化项目</span>
+            </li>
+            <li>
+                2. 现在：  <span style="color: rgb(245, 71, 100)">无需全局安装脚手架， 可直接使用脚手架提供的命令</span>
+            </li>
+            <li>
+                3. 推荐：  <span style="color: red">npx create-react-app my-app</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="three">yarn命令介绍</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>
+                1. 起源：  facebook发布
+            </li>
+            <li>
+                2. 特点： 快速、安全、可靠
+            </li>
+            <li>
+                3. 安装： <span style="color: red">yarn add 包名称</span>
+            </li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="four">导入react</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>1. 导入 react 和 react-dom包</li>
+            <li>
+                <div class="coding">
+                    import React from 'react'
+                    import ReactDOM from 'react-dom'
                 </div>
             </li>
+            <li>2. 调用 React.<span style="color: rgb(245, 71, 100)">createElement</span>创建元素</li>
+            <li>3. 调用 <span style="color: rgb(245, 71, 100)"> ReactDOM.render</span> 渲染元素到页面中</li>
         </ul>
 
+        <h2 class="title"> IV. JSX学习</h2>
 
         <h4 class="detail-title">
-            <span id="one">报错3</span>
+            <span id="five">createElement()问题</span>
+        </h4>
+        <ul class="ul-detail">
+            <li style="color: rgb(255, 157, 0)">1.  繁琐不简洁</li>
+            <li style="color: rgb(255, 157, 0)">2.  不直观， 一眼看不出结构</li>
+            <li style="color: rgb(255, 157, 0)">3. 不优雅， 用户体验不爽</li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="six">jsx学习</span>
         </h4>
         <ul class="ul-detail">
             <li>
-                <div class="coding">
-                    Error: Cannot find module 'webpack-dev-server'
-                    Require stack:
-                    - /Users/lsm/Documents/01.study/react/first-react/scripts/start.js<br>
-
-                    // 解决方案： npm install --save-dev webpack-dev-server
+                <div class="tips">
+                    <div></div>
+                    1. 是javascript xml简写<br>
+                    2. 优势： 声明式语法更直观<br>
+                    3. 优势： 降低了学习成本， 提高了开发效率<br>
+                    4. jsx 是react 的核心内容<br>
+                    5. jsx 表示在js代码中写html, 是react 声明式的体现<br>
+                    6. react 完全利用js语言自身的能力来编写UI， 而不是造轮子的方式增强html功能<br>
                 </div>
             </li>
-        </ul>
-
-
-        <h4 class="detail-title">
-            <span id="one">报错4</span>
-        </h4>
-        <ul class="ul-detail">
             <li>
-                <div class="coding">
-                    Error: Cannot find module 'resolve'
-                    Require stack:
-                    - /Users/lsm/Documents/01.study/react/first-react/config/webpack.config.js
-                    - /Users/lsm/Documents/01.study/react/first-react/scripts/start.js<br>
-
-                    // 解决方案： npm install --save-dev resolve
-                </div>
+                1.  jsx创建元素：<span style="color: red"> const title = 《h1》 新建元素 《/h1》</span>
             </li>
-        </ul>
-
-        <h4 class="detail-title">
-            <span id="one">报错5</span>
-        </h4>
-        <ul class="ul-detail">
             <li>
-                <div class="coding">
-                    ERR! Found: webpack@5.74.0
-                    npm ERR! node_modules/webpack
-                    npm ERR! webpack@"^5.74.0" from the root project
-                    npm ERR!
-                    npm ERR! Could not resolve dependency:
-                    npm ERR! peer webpack@"^4.0.0" from optimize-css-assets-webpack-plugin@6.0.1
-                    npm ERR! node_modules/optimize-css-assets-webpack-plugin
-                    npm ERR! dev optimize-css-assets-webpack-plugin@"*" from the root project
-                    npm ERR!
-                    npm ERR! Fix the upstream dependency conflict, or retry<br>
-
-
-                    // 使用--force或--legacy-peer-deps可解决这种情况。<br>
-
-                    // --force 会无视冲突，并强制获取远端npm库资源，当有资源冲突时覆盖掉原先的版本。<br>
-                    // --legacy-peer-deps：安装时忽略所有peerDependencies，忽视依赖冲突，采用npm版本4到版本6的样式去安装依赖，已有的依赖不会覆盖。<br>
-
-                    // npm install --legacy-peer-deps optimize-css-assets-webpack-plugin --save-dev
-                </div>
+                2.  渲染元素：<span style="color: red">  ReactDOM.render(title, document.getElementById('root'))</span>
             </li>
         </ul>
 
         <h4 class="detail-title">
-            <span id="one">报错6</span>
+            <span id="seven">为什么脚手架可以使用jsx语法</span>
+        </h4>
+        <ul class="ul-detail">
+            <li>1. jsx 不是ecmascript 标准语法， 是ecmascript 的<span style="color: red">语法扩展</span></li>
+            <li>2. 需要babel 编译处理，才能在浏览器环境中使用</li>
+            <li>3. create-react-app 中已经默认有该配置， 所以无需手动配置</li>
+            <li>4. 编译包： @babel/preset-react</li>
+        </ul>
+
+        <h4 class="detail-title">
+            <span id="eight">jsx语法注意事项</span>
         </h4>
         <ul class="ul-detail">
             <li>
-                <div class="coding">
-                    Invalid options object. Terser Plugin has been initialized using an options object that does not
-                    match the API
-                    schema.
-                    - options has an unknown property 'sourceMap'. These properties are valid:
-                    object { test?, include?, exclude?, terserOptions?, extractComments?, parallel?, minify? }<br>
-
-
-                    // 解决方案： npm uninstall webpack<br>
-                    // npm install --legacy-peer-dep webpack@4.46.0 --save-dev<br>
-
-                    // npm install --save-dev terser-webpack-plugin@4.2.3
-                </div>
+                1. 属性名： 驼峰命名法
+            </li>
+            <li>
+                2. 特殊属性：  class -> className;   for -> htmlFor;  tabindex ->tabIndex
+            </li>
+            <li>
+                <span style="color: red">3. 推荐：   小括号包裹 ‘ jsx ’，避免自动插入分号</span>
             </li>
         </ul>
 
         <h4 class="detail-title">
-            <span id="one">报错7</span>
+            <span id="nine">jsx 嵌入js 表达式</span>
         </h4>
+
         <ul class="ul-detail">
-            <li>
-                <div class="coding">
-                    ManifestPlugin is not a constructor<br>
-
-                    // 解决方案： 降低版本： npm install webpack-manifest-plugin@2.2.0 --save-dev
-
-                </div>
-            </li>
+            <li> 定义：  { js表达式  } </li>
         </ul>
 
         <h4 class="detail-title">
-            <span id="one">报错8</span>
+            <span id="ten">jsx 条件渲染 、列表渲染 、 样式处理</span>
         </h4>
-
         <ul class="ul-detail">
-            <li>
+            <li>1. 条件渲染： if else  /   三元表达式    / 逻辑与运算符 </li>
+            <li>2. 列表渲染： 数组的 map 方法 （避免使用索引号作为key）</li>
+            <li>3. 样式处理：  <br>
+                <p> ● 行内样式 - style</p>
                 <div class="coding">
-                    Failed to compile.
-
-                    Cannot read property 'tap' of undefined<br>
-
-                    // 原因： 保持html-webpack-plugin与webpack的版本一致，webpack用的是5,那么html-webpack-plugin版本也要是5<br>
-                    // npm install --save-dev html-webpack-plugin@4.0.0-beta.11
+                    style = 双括号， 属性之间逗号隔开
                 </div>
-            </li>
-        </ul>
-
-        <h4 class="detail-title">
-            <span id="one">报错9</span>
-        </h4>
-        <ul class="ul-detail">
-            <li>
+                <p style="color: red"> ●  类名 - className</p>
                 <div class="coding">
-                    webpack Dev Server Invalid Options
-
-                    options should NOT have additional properties
-                    options should NOT have additional properties
-                    options should NOT have additional properties<br>
-
-                    // 原因： webpack 版本和webpack-dev-server版本和html-webpack-plugin版本要对应<br>
-                    // "devDependencies": { "html-webpack-plugin": "^4.5.1", "webpack": "^4.46.0", "webpack-dev-server":
-                    "^3.11.2" }<br>
-                    // webpack4.x版本配置webpack-dev-server3.x+html-webpack-plugin4.x
+                    className="bg"
                 </div>
             </li>
         </ul>
@@ -417,13 +433,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2022/10/11/react基础/" data-toggle="tooltip" data-placement="top" title="react 基础1">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2022/10/10/vue 动态路由的实现/" data-toggle="tooltip" data-placement="top" title="">Next Post &rarr;</a>
+                            <a href="/2022/10/11/react 项目报错/" data-toggle="tooltip" data-placement="top" title="react 项目报错">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -498,8 +510,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react 项目报错/";
-    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react 项目报错/";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react基础/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react基础/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -550,8 +562,6 @@
     
     <!-- pagination -->
     <!-- <ul class="pager">
-    
-        <li class="previous"><a href="/">&larr;  next</a></li>
     
     
         <li class="next"><a href="/">prev  &rarr;</a></li>
