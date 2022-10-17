@@ -224,6 +224,7 @@
         <a href="#three">3. 修改ui主题配置文件</a><br>
         <a href="#four">4. 部署上线</a><br>
         <a href="#five">5. hexo命令</a><br>
+        <a href="#six">6. hexo分页</a><br>
       </div>
       <h2 class="title">1. 工具安装</h2>
       <section class="chaper">
@@ -457,6 +458,44 @@
             </li>
           </ul>
         </div>
+        <div class="detail">
+          <h4 class="detail-title">
+            <span id="six">2.4、 hexo分页</span>
+          </h4>
+          <ul class="ul-detail">
+            <li>
+              1. 安装插件
+              <div class="coding">
+                <p>$ npm install hexo-generator-index --save</p>
+                <p>$ npm install hexo-generator-archive –-save</p>
+                <p>$ npm install hexo-generator-tag --save</p>
+              </div>
+            </li>
+            <li>
+              2. 在主题配置文件_config.yml中修改
+              <div class="coding">
+                # Algolia Search <br>
+                # For more information: https://www.algolia.com  <br>
+                algolia_search: <br>
+                  <p style="text-indent: 30px;">enable: false</p>
+                  <p style="text-indent: 30px;">hits:</p>
+                  <p style="text-indent: 50px;">per_page: 5 </p>
+                
+                #主页每页显示文章数 <br>
+                index_generator: <br>
+                <p style="text-indent: 30px;">per_page: 5 </p>
+                #archive分页每页显示文章数 <br>
+                archive_generator: <br>
+                <p style="text-indent: 30px;">per_page: 5 </p>
+                #tag分页每页显示文章数 <br>
+                tag_generator: <br>
+                <p style="text-indent: 30px;">per_page: 10 </p>
+                #category分页每页显示文章数 <br>
+                category_generator:  <br>
+                <p style="text-indent: 30px;">per_page: 10 </p>
+            </div></li>
+          </ul>
+        </div>
       </section>
     </div>
   </div>
@@ -470,12 +509,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2020/04/17/Navicat Premium for Mac中文版 破解/" data-toggle="tooltip" data-placement="top" title="Object">&larr; Previous Post</a>
+                            <a href="/2020/04/17/Object/" data-toggle="tooltip" data-placement="top" title="Object">&larr; 上一页</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2020/04/16/vue-cli publicPath 解读/" data-toggle="tooltip" data-placement="top" title="vue-cli publicPath解读">Next Post &rarr;</a>
+                            <a href="/2020/04/16/vue-cli publicPath 解读/" data-toggle="tooltip" data-placement="top" title="vue-cli publicPath解读">下一页 &rarr;</a>
                         </li>
                     
                 </ul>
@@ -523,17 +562,7 @@
                 <ul class="list-inline">
 
                     
-                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
-                    
-                        <li><a href="#" target="_blank">Foo</a></li>
-                    
-                        <li><a href="#" target="_blank">Bar</a></li>
-                    
-                        <li><a href="#" target="_blank">Example Friends</a></li>
-                    
-                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">lsm&#39;s Blog</a></li>
                     
                 </ul>
                 
@@ -608,7 +637,8 @@
     
         <li class="next"><a href="/">prev  &rarr;</a></li>
     
-</ul> -->
+</ul>
+ -->
 
     <!-- Footer -->
     <!-- Footer -->
