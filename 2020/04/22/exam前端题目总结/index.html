@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          exam前端题目总结 - MsAbby
+        
+    </title>
+
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2020/04/22/exam前端题目总结/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- 额外 CSS -->
+    <link rel="stylesheet" href="/css/resize.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MsAbby&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">学习日记</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/interview/">面试</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">文章目录</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/banner2.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
+                        
+                          <a class="tag" href="/tags/#语法" title="语法">语法</a>
+                        
+                          <a class="tag" href="/tags/#HTML/CSS" title="HTML/CSS">HTML/CSS</a>
+                        
+                    </div>
+                    <h1>exam前端题目总结</h1>
+                    <h2 class="subheading">Whether:sunny / Mood:am-normal, pm-normal / Especially:0</h2>
+                    <span class="meta">
+                        Posted by lsm on
+                        2020-04-22
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+                <div class="markdown-bg">
+
+                  <h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><ul>
+<li>&lt;img标签&gt; alt和title同时设置的时候，title作为图片的替代文字出现，alt是图片的解释文字。</li>
+<li>&lt;i、em标签&gt;都表示斜体，区别<code>&lt;em&gt;</code>表示强调、可以被设备识别，<code>&lt;i&gt;</code>单纯表示斜体、不能被识别。</li>
+<li>&lt;audio标签&gt; 定义声音，比如音乐或其他音频流。</li>
+<li>&lt;canvas标签&gt; 定义图形，比如图表和其他图像。</li>
+<li>&lt;menu标签&gt; 定义命令的列表或菜单。用于上下文菜单、工具栏以及用于列出表单控件和命令。</li>
+<li>&lt;command标签&gt; 可以定义命令按钮，比如单选按钮、复选框或按钮。</li>
+<li>&lt;pre标签&gt; 定义预格式文本，保持文本原有的格式。</li>
+<li>&lt;meta标签&gt; 可提供有关页面的元信息，位于文档的头部，不包含任何内容。</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">浏览器模式<span><ul>
+<li>浏览器模式有两种呈现模式：<code>标准模式</code>和<code>混杂模式</code>。在标准模式中，浏览器根据规范呈现页面；在混杂模式中，页面以一种比较宽松的向后兼容的方式显示。</li>
+</ul>
+</span></span></li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">DOCTYPE模式<span><ul>
+<li>DOCTYPE 有两种风格，<code>严格</code>（ strict ）和<code>过渡</code>（ transitional ）。过渡 DOCTYPE 是帮助开发人员从老版本迁移到新版本。</li>
+<li>DOCTYPE 不存在或格式不正确会导致文档以<code>兼容模式</code>呈现。</li>
+</ul>
+</span></span></li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">元素继承</span><ul>
+<li>所有元素可继承：visibility和cursor。</li>
+<li>内联元素可继承：letter-spacing、word-spacing、white-space、line-height、<code>color</code>、<code>font</code>、<code>font-family</code>、<code>font-size</code>、font-style、font-variant、font-weight、text-decoration、text-transform、direction。</li>
+<li>终端块状元素可继承：text-indent和text-align。</li>
+<li>列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。</li>
+</ul>
+</li>
+</ul>
+<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ul>
+<li>css属性<code>overflow</code>属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要，用户代理都会提供一种滚动机制。</li>
+<li>css属性<code>border: none</code>表示边框样式无, 浏览器不进行渲染，不占用内存。</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">CSS Sprites<span><ul>
+<li>它允许将一个页面涉及到的所有零星图片都包含到一张大图中。</li>
+<li>利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，避免图片载入缓慢的现象。</li>
+<li>它能减少图片的字节。</li>
+<li>它能很好地减少网页的http请求，从而大大的提高页面的性能。</li>
+<li>但是：图片合并麻烦、图片适应性差、图片定位繁琐、可维护性差。</li>
+</ul>
+</span></span></li>
+</ul>
+<h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><ul>
+<li><code>onload方法</code> 是某个页面的css js html 文档结构和图像被完全加载。</li>
+<li><code>escape方法</code>： 返回对一个字符串编码后的结果字符串。</li>
+<li><code>eval方法</code>：将某个参数字符串作为一个JavaScript执行。</li>
+<li><code>parseFloat方法</code>：将一个字符串转换成对应的小数。</li>
+<li>flash和js通过<code>ExternalInterface</code>类进行的交互。</li>
+<li><code>call（）</code>，第一个参数是 运行函数的作用域，其余传递给函数的参数必须逐个列举出来。</li>
+<li><code>apply（）</code>，第一个参数是 运行函数的作用域 ，另一个参数是参数数组, 可以是Array实例或arguments对象。</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">继承</span><ul>
+<li>6种方式： <code>原型链</code>继承、借用<code>构造函数</code>继承、<code>组合</code>继承、<code>原型式</code>继承、<code>寄生式</code>继承、<code>寄生组合式</code>继承。</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">异步编程模式</span> <ul>
+<li>4种方法： <code>回调函数</code>、<code>事件监听</code>、<code>发布/订阅</code>、<code>Promises</code>对象：。</li>
+</ul>
+</li>
+</ul>
+<h4 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h4><ul>
+<li>只要 协议 、 域名 、 端口 有任何一个 不同, 都被当作是 不同 的域</li>
+<li>js可以使用jsonp进行跨域</li>
+<li>通过修改document.domain来跨子域</li>
+<li>使用window.name来进行跨域</li>
+</ul>
+<h4 id="栈内存和堆内存"><a href="#栈内存和堆内存" class="headerlink" title="栈内存和堆内存"></a>栈内存和堆内存</h4><ul>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">栈(stack)和堆（heap）</span><ul>
+<li>stack为<code>自动分配</code>的内存空间，它由系统自动释放；而heap则是<code>动态分配</code>的内存，大小也不一定会自动释放</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">数据类型</span><ul>
+<li><code>基本数据类型</code>：Number、String、Boolean、Null、Undefined、Symbol（ES6）、Null，可以直接操作保存在变量中的实际值。</li>
+<li><code>引用数据类型</code>：Object（在JS中除了基本数据类型以外的都是对象，Array，Function，Date，RegExp都是对象）。</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">栈内存</span><ul>
+<li>存储<code>基本数据类型</code>的变量以及<code>引用数据数据类型变量的指针</code>,像一个线性排列的空间，每个小单元大小基本相等，内存空间大小可以分配，数据大小确定，按值存放，按值访问。</li>
+</ul>
+</li>
+<li><span style="color: #40B8FA;border-bottom: 1px solid #3BAAFA;">堆内存</span><ul>
+<li>存储<code>引用数据类型</code>值的变量，每个空间大小不一样，要根据情况进行特定的配置<br><img src="/img/knowledge/stack.jpg" width="60%"></li>
+</ul>
+</li>
+</ul>
+<h4 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h4><ul>
+<li>文章转载：<ul>
+<li><a href="https://www.cnblogs.com/c2016c/articles/9328725.html" target="_blank" rel="noopener">深浅拷贝1</a></li>
+<li><a href="https://juejin.im/post/5d0a48d86fb9a07ea803cf23" target="_blank" rel="noopener">深浅拷贝2</a></li>
+</ul>
+</li>
+<li>目标：是相对于<code>引用类型</code>而言的。</li>
+<li>定义：<ul>
+<li>浅拷贝： 指复制后两个js 对象 <code>指向同一个内存地址</code>，其中一个改变会影响另一个。</li>
+<li>深拷贝： 指复制后的新对象重新 <code>指向新的内存地址</code>，两个对象改变互不影响。</li>
+</ul>
+</li>
+<li><p><span style="color: #ff502c;border-bottom: 1px solid #ff502c; font-weight: bolder">浅拷贝 - 常用方法</span></p>
+<ul>
+<li><span style="color: #ff502c; font-weight: bolder">1、赋值</span><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">let</span> <span class="string">a</span> <span class="string">=</span> <span class="string">[1,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">,</span> <span class="number">5</span><span class="string">]</span></span><br><span class="line"><span class="string">let</span> <span class="string">b</span> <span class="string">=</span> <span class="string">a</span>         <span class="string">//</span>  <span class="string">指针相同，指向同一个对象</span></span><br><span class="line"><span class="string">b[0]</span> <span class="string">=</span> <span class="number">0</span></span><br><span class="line"><span class="string">console.log(a)</span>     <span class="string">//</span>  <span class="string">[0,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">,</span> <span class="number">5</span><span class="string">]</span></span><br><span class="line"><span class="string">console.log(b)</span>     <span class="string">//</span>  <span class="string">[0,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">,</span> <span class="number">5</span><span class="string">]</span></span><br><span class="line"><span class="string">console.log(a==b)</span>  <span class="string">//</span>  <span class="literal">true</span></span><br><span class="line"><span class="string">console.log(a===b)</span> <span class="string">//</span>  <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/img/knowledge/copy.jpg" width="60%"></p>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">2、Object.assign() <code>[ES6]</code></span></p>
+<ul>
+<li><p>定义： 把任意多个的源对象自身可枚举属性拷贝给目标对象，然后返回目标对象<br><code>let obj = Object.assign({目标对象}, {源对象1}，{源对象2}，... )</code></p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  <span class="attribute">study</span>: &#123;</span><br><span class="line">    name: 'math'</span><br><span class="line">  &#125;,</span><br><span class="line">  age: 16 </span><br><span class="line">&#125;</span><br><span class="line">let obj2 = Object<span class="variable">.assign</span>(&#123;&#125;, obj1)</span><br><span class="line">obj2<span class="variable">.study</span><span class="variable">.math</span> = 'chinese'</span><br><span class="line">console<span class="variable">.log</span>(obj1)  // &#123; study: &#123;name: 'chinese'&#125;, age: 16 &#125;</span><br><span class="line">console<span class="variable">.log</span>(obj2)  // &#123; study: &#123;name: 'chinese'&#125;, age: 16 &#125;</span><br><span class="line">console<span class="variable">.log</span>(obj1<span class="variable">.study</span><span class="variable">.name</span> == obj2<span class="variable">.study</span><span class="variable">.name</span>)  //  true</span><br><span class="line">console<span class="variable">.log</span>(obj1<span class="variable">.study</span><span class="variable">.name</span> === obj2<span class="variable">.study</span><span class="variable">.name</span>) //  true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">3、extend() <code>[递归思路]</code></span></p>
+<ul>
+<li><p><code>$.extend(参数1，{}, obj)</code>： 参数1<code>不写</code>或为<code>false</code>表示浅拷贝， <code>true</code>表示深拷贝</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  <span class="attribute">study</span>: &#123;</span><br><span class="line">    name: 'math'</span><br><span class="line">  &#125;,</span><br><span class="line">  age: 16 </span><br><span class="line">&#125;</span><br><span class="line">let obj2 = $<span class="variable">.extend</span>(&#123;&#125;, obj1)</span><br><span class="line">obj2<span class="variable">.study</span><span class="variable">.name</span> = 'chinese'</span><br><span class="line">console<span class="variable">.log</span>(obj1)  // &#123;study: &#123;name: 'chinese'&#125;, age: 16&#125;</span><br><span class="line">console<span class="variable">.log</span>(obj2)  // &#123;study: &#123;name: 'chinese'&#125;, age: 16&#125;</span><br><span class="line">console<span class="variable">.log</span>(obj1<span class="variable">.study</span><span class="variable">.name</span> == obj2<span class="variable">.study</span><span class="variable">.name</span>)  // true</span><br><span class="line">console<span class="variable">.log</span>(obj1<span class="variable">.study</span><span class="variable">.name</span> === obj2<span class="variable">.study</span><span class="variable">.name</span>) // true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">4、Array.prototype.concat() <code>[数组]</code></span></p>
+<ul>
+<li><p>数组concat返回一个新数组，不影响原数组</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [[1, 2], 3, 4]</span><br><span class="line">let arr2 = arr1.concat()</span><br><span class="line"></span><br><span class="line">arr1[<span class="string">0</span>][<span class="symbol">0</span>] = 0</span><br><span class="line">console.log(arr1)          // [[0, 2], 3, 4]</span><br><span class="line">console.log(arr2)          // [[0, 2], 3, 4]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">5、Array.prototype.slice() <code>[数组]</code></span></p>
+<ul>
+<li><p>数组slice返回一个新数组，不影响原数组</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [[1, 2], 3, 4]</span><br><span class="line">let arr2 = arr1.slice()</span><br><span class="line"></span><br><span class="line">arr1[<span class="string">0</span>][<span class="symbol">0</span>] = 0</span><br><span class="line">console.log(arr1)          // [[0, 2], 3, 4]</span><br><span class="line">console.log(arr2)          // [[0, 2], 3, 4]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><span style="color: #ff502c; border-bottom: 1px solid #ff502c; font-weight: bolder">深拷贝 - 常用方法</span></p>
+<ul>
+<li><p><span style="color: #ff502c; font-weight: bolder">1、赋值<code>[一维数据]</code></span></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">let</span> <span class="string">obj1</span> <span class="string">=</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="attr">a:</span> <span class="number">10</span><span class="string">,</span></span><br><span class="line">  <span class="attr">b:</span> <span class="number">20</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">let</span> <span class="string">obj2</span> <span class="string">=</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="attr">a:</span> <span class="string">obj1.a,</span></span><br><span class="line">  <span class="attr">b:</span> <span class="string">obj1.b</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">obj2.b</span> <span class="string">=</span> <span class="number">100</span></span><br><span class="line"><span class="string">console.log(obj1)</span>   <span class="string">//</span> <span class="string">&#123;</span> <span class="attr">a:</span> <span class="number">10</span><span class="string">,</span> <span class="attr">b:</span> <span class="number">20</span><span class="string">&#125;</span></span><br><span class="line"><span class="string">console.log(obj2)</span>   <span class="string">//</span>  <span class="string">&#123;</span> <span class="attr">a:</span> <span class="number">10</span><span class="string">,</span> <span class="attr">b:</span> <span class="number">100</span><span class="string">&#125;</span></span><br><span class="line"><span class="string">console.log(obj1</span> <span class="string">==</span> <span class="string">obj2)</span>    <span class="string">//</span>  <span class="literal">false</span></span><br><span class="line"><span class="string">console.log(obj1</span> <span class="string">===</span> <span class="string">obj2)</span>    <span class="string">//</span>  <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">2、Object.assign() <code>[一维数据、ES6]</code></span></p>
+<blockquote>
+<p>ps：不是真正意义上的深拷贝</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">let</span> <span class="string">obj1</span> <span class="string">=</span> <span class="string">&#123;</span></span><br><span class="line">  <span class="attr">study:</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">'math'</span></span><br><span class="line">  <span class="string">&#125;,</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">16</span> </span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">let</span> <span class="string">obj2</span> <span class="string">=</span> <span class="string">Object.assign(&#123;&#125;,</span> <span class="string">obj1)</span></span><br><span class="line"><span class="string">obj2.study.age</span> <span class="string">=</span> <span class="number">5</span></span><br><span class="line"><span class="string">console.log(obj1)</span>  <span class="string">//</span> <span class="string">&#123;</span> <span class="attr">study:</span> <span class="string">&#123;name:</span> <span class="string">'math'</span><span class="string">&#125;,</span> <span class="attr">age:</span> <span class="number">16</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">console.log(obj2)</span>  <span class="string">//</span> <span class="string">&#123;</span> <span class="attr">study:</span> <span class="string">&#123;name:</span> <span class="string">'math'</span><span class="string">&#125;,</span> <span class="attr">age:</span> <span class="number">5</span> <span class="string">&#125;</span></span><br><span class="line"><span class="string">console.log(obj1</span> <span class="string">==</span> <span class="string">obj2)</span>  <span class="string">//</span>  <span class="literal">false</span></span><br><span class="line"><span class="string">console.log(obj1</span> <span class="string">===</span> <span class="string">obj2)</span> <span class="string">//</span>  <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">3、Array.prototype.concat() <code>[一维数据、数组]</code></span></p>
+<blockquote>
+<p>ps：不是真正意义上的深拷贝</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">let</span> <span class="string">arr1</span> <span class="string">=</span> <span class="string">[[1,</span> <span class="number">2</span><span class="string">],</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">]</span></span><br><span class="line"><span class="string">let</span> <span class="string">arr2</span> <span class="string">=</span> <span class="string">arr1.concat()</span></span><br><span class="line"></span><br><span class="line"><span class="string">arr1[1]</span> <span class="string">=</span> <span class="number">66</span></span><br><span class="line"><span class="string">console.log(arr1)</span>          <span class="string">//</span> <span class="string">[[1,</span> <span class="number">2</span><span class="string">],</span> <span class="number">66</span><span class="string">,</span> <span class="number">4</span><span class="string">]</span></span><br><span class="line"><span class="string">console.log(arr2)</span>          <span class="string">//</span> <span class="string">[[1,</span> <span class="number">2</span><span class="string">],</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">4、Array.prototype.slice() <code>[一维数据、数组]</code></span></p>
+<blockquote>
+<p>ps：不是真正意义上的深拷贝</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">let</span> <span class="string">arr1</span> <span class="string">=</span> <span class="string">[[1,</span> <span class="number">2</span><span class="string">],</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">]</span></span><br><span class="line"><span class="string">let</span> <span class="string">arr2</span> <span class="string">=</span> <span class="string">arr1.concat()</span></span><br><span class="line"></span><br><span class="line"><span class="string">arr1[1]</span> <span class="string">=</span> <span class="number">66</span></span><br><span class="line"><span class="string">console.log(arr1)</span>          <span class="string">//</span> <span class="string">[[1,</span> <span class="number">2</span><span class="string">],</span> <span class="number">66</span><span class="string">,</span> <span class="number">4</span><span class="string">]</span></span><br><span class="line"><span class="string">console.log(arr2)</span>          <span class="string">//</span> <span class="string">[[1,</span> <span class="number">2</span><span class="string">],</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">5、JSON.parse(JSON.stringify(obj))<code>[二维数据]</code></span></p>
+<ul>
+<li>a、能够处理JSON格式的所有数据类型。</li>
+<li>b、会抛弃对象的<code>constructor</code>，即：不管该对象原来构造函数是什么，深拷贝后都会变成<code>Object</code>。</li>
+<li>c、<code>正则表达式</code>类型、<code>函数类型</code>等无法进行深拷贝，且会直接丢失相应的值。</li>
+<li>d、如果对象中存在循环引用的情况也无法正确处理。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">study: &#123;</span><br><span class="line">  name: <span class="string">'math'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  age: <span class="number">16</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line">obj2.study.name = <span class="string">'chinese'</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">// &#123; study: &#123;name: 'math'&#125;, age: 16 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)  <span class="comment">// &#123; study: &#123;name: 'chinese'&#125;, age: 16 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 == obj2)  <span class="comment">//  false</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2) <span class="comment">//  false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">6、extend() <code>[二维数据、递归思路]</code></span><br><code>$.extend(true, {}, obj)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  study: &#123;</span><br><span class="line">    name: <span class="string">'math'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  age: <span class="number">16</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = $.extend(<span class="literal">true</span>, &#123;&#125;, obj1)</span><br><span class="line">obj2.study.name = <span class="string">'chinese'</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">// &#123;study: &#123;name: 'math'&#125;, age: 16&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)  <span class="comment">// &#123;study: &#123;name: 'chinese'&#125;, age: 16&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 == obj2)  <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><span style="color: #ff502c; font-weight: bolder">7、lodash中的<em>.clone(obj, true)等价于</em>.cloneDeep(obj) <code>[二维数据、递归思路]</code></span></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  study: &#123;</span><br><span class="line">    name: <span class="string">'math'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  age: <span class="number">16</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = _.cloneDeep(obj1)</span><br><span class="line">obj2.study.name = <span class="string">'chinese'</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)  <span class="comment">// &#123;study: &#123;name: 'math'&#125;, age: 16&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)  <span class="comment">// &#123;study: &#123;name: 'chinese'&#125;, age: 16&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 == obj2)  <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><span style="color: #ff502c;border-bottom: 1px solid #ff502c; font-weight: bolder">深拷贝不同方法的性能对比</span></p>
+<blockquote>
+<p style="font-size: 16px; font-weight: bolder"><code>一维数据</code>结构的深拷贝方法<code>性能最佳</code>为: <code>Object.assign()</code></p><br><p style="font-size: 16px; font-weight: bolder"><code>二维数据</code>结构的深拷贝方法<code>性能最佳</code>为: <code>JSON.parse(JSON.stringify())</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="原型-继承"><a href="#原型-继承" class="headerlink" title="原型 / 继承"></a>原型 / 继承</h4><ul>
+<li>构造函数：<ul>
+<li>定义： 构造函数本身就是一个函数，与普通函数没有任何区别，不过为了规范一般将其<code>首字母大写</code>。构造函数和普通函数的区别在于，使用 new 生成实例的函数就是构造函数，直接调用的就是普通函数。</li>
+</ul>
+</li>
+</ul>
+
+                </div>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2020/04/22/code编程/" data-toggle="tooltip" data-placement="top" title="code编程">&larr;上一页</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/04/17/git clone并上传到新的远程分支/" data-toggle="tooltip" data-placement="top" title="git clone并上传到新的远程分支">下一页&rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5 class="catalog-toggle">
+                      目录
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
+                        
+                          <a class="tag" href="/tags/#语法" title="语法">语法</a>
+                        
+                          <a class="tag" href="/tags/#HTML/CSS" title="HTML/CSS">HTML/CSS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">lsm&#39;s Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2020/04/22/exam前端题目总结/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2020/04/22/exam前端题目总结/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+    <!-- pagination -->
+    <!-- <ul class="pager">
+    
+        <li class="previous"><a href="/">&larr;  next</a></li>
+    
+    
+        <li class="next"><a href="/">prev  &rarr;</a></li>
+    
+</ul>
+ -->
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Sarah匆匆">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/MsAbby">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; MsAbby&#39;s Blog 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kaijun.rocks/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+   
+
+
+<!-- Image to hack wechat -->
+<img src="http://kaijun.rocks/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

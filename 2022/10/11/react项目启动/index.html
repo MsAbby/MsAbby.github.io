@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          react 项目启动 - MsAbby
+        
+    </title>
+
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react项目启动/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- 额外 CSS -->
+    <link rel="stylesheet" href="/css/resize.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MsAbby&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">学习日记</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/interview/">面试</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">文章目录</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/banner6.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
+                        
+                          <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                        
+                    </div>
+                    <h1>react 项目启动</h1>
+                    <h2 class="subheading">Whether:sunny / Mood:am-normal, pm-bad / Especially: 1</h2>
+                    <span class="meta">
+                        Posted by lsm on
+                        2022-10-11
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="is-top">top</div>
+        <div class="tips" style="display: flex; ">
+            <div style="flex: 1;">
+                <a href="#one">1. 初始化项目</a><br>
+                <a href="#two">2. 组件库-antd-mobile</a><br>
+                <a href="#three">3. 路由引入</a><br>
+                <a href="#four">4. 样式调整</a><br>
+                <a href="#five">5. 页面-两种布局页面</a><br>
+                <a href="#six">6. 页面-嵌套路由</a><br>
+                <a href="#seven">7. 页面-实现tabbar</a><br>
+               
+            </div>
+            <div style="flex: 1;">
+                <a href="#eight">8. 页面-实现首页</a><br>
+                <a href="#nine">9. 功能-实现地理位置定位</a><br>
+                <a href="#ten">10. 功能-实现城市列表</a><br>
+                <a href="#eleven">11. 优化-场列表性能优化</a><br>
+                <a href="#twelve">12. 组件化 - 顶部导航栏组件化</a><br>
+                <a href="#thirteen">13. 组件间-样式覆盖的问题-CSS IN JS</a><br>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="title"> I. 项目搭建</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="one">初始化项目</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 初始化项目： npx create-react-app 项目名
+                    </li>
+                    <li>
+                        2. 启动项目： <span style="color: red">npm start</span>
+                    </li>
+                    <li>
+                        3. manifest.json文件：  <span style="color: red">pwa 应用的元数据</span>
+                    </li>
+                    <li>
+                        4. serviceWorker.js文件：  <span style="color: red">p用来实现pwa(可选)</span>
+                    </li>
+                    <li>
+                        5. 调整目录： 
+                        <div class="coding">
+                            src/ <br>
+                                assets/  资源 <br>
+                                components/<br>
+                                pages/<br>
+                                utils/   工具<br>
+                                App.js 根组件<br>
+                                index.css 全局样式<br>
+                                index.js  项目入口文件<br>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="two">组件库-antd-mobile</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 安装： npm install  antd-mobile
+                    </li>
+                    <li>
+                        2. 引入： <span style="color: red">import { Button } from 'antd-mobile</span>
+                    </li>
+                    <li>
+                        3. 渲染组件：
+                    </li>
+                    <li>
+                        4. index.js 导入样式：  import 'antd-mobile/dist/antd-mobile/css'
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="three">路由引入</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 安装： yarn add react-router-dom
+                    </li>
+                    <li>
+                        2. index.js中引入： Router 、Route、 Link
+                    </li>
+                    <li>
+                        3. 创建组件： Home/index.js  CityList/index.js
+                    </li>
+                    <li>
+                        4. Route组件配置
+                        <div class="coding">
+                            {/* 配置导航菜单 */} <br>
+                            《Link to='/home'》 首页 《Link》"<br>
+                            《Link to='/city'》 城市选项 《/Link》<br>
+                            {/* 配置路由 */}<br>
+                            《Route path='/home' component={Home} 《/Route》<br>
+                            《Route path='/city' component={CityList} 《/Route》<br>
+                        </div>
+                    </li>
+                    <li>
+                        5. 新版本配置：
+                        <div style="text-indent: 30px;">在路由器包裹路由之前需要先在路由外侧添加Routes组件</div>
+                        <div style="text-indent: 30px;">路由中的component需要改为element</div>
+                        <div style="text-indent: 30px;">element后面需要写成组件标签形式</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="four">样式调整</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 修改页面标题
+                    </li>
+                    <li>
+                        2. 基础样式调整
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section>
+            <h2 class="title"> II. 项目整体布局</h2>
+            <article>
+                <h4 class="detail-title">
+                    <span id="five">页面-两种布局页面</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 有tabbar的页面： 首页、找房、资讯、我的 - 内部切换路由 - 嵌套路由
+                    </li>
+                    <li>
+                        2. 没有tabbar的页面：城市列表
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="six">页面-嵌套路由</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 定义： 路由内部包含路由
+                    </li>
+                    <li>
+                        2. 步骤：
+                        <div style="text-indent: 30px;">a. 创建子组件</div>
+                        <div style="text-indent: 30px;">b. 父组件中， 添加Route作为子组件出口</div>
+                        <div style="text-indent: 30px;">c. 子路由的path， 以父路由的path开头（父展示，子才会展示）</div>
+                        <div style="text-indent: 30px;">d. 子路由pathname值修改为对应的值</div>
+                        <div style="text-indent: 30px;">e. / 重定向到首页</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="seven">页面-实现tabbar</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 步骤：
+                        <div style="text-indent: 30px;">a. tabbar组件： 打开antd-mobile的tabbar组件</div>
+                        <div style="text-indent: 30px;">b. 拷贝代码： 拷贝核心代码到 Home组件中</div>
+                    </li>
+                    <li>
+                        2. 调整：
+                        <div style="text-indent: 30px;">a. 修改页面标题</div>
+                        <div style="text-indent: 30px;">b. 修改图标</div>
+                        <div style="text-indent: 30px;">c. 修改文字颜色</div>
+                        <div style="text-indent: 30px;">d. 修改图标</div>
+                        <div style="text-indent: 30px;">e. 刷新时要保证选中的高亮</div>
+                    </li>
+                    <li>
+                        3. 最优代码：
+                        <div style="text-indent: 30px;">a. 菜单数据： 单独提取</div>
+                        <div style="text-indent: 30px;">b. map数据遍历item</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eight">页面-实现首页</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 轮播图Swiper步骤：
+                        <div style="text-indent: 30px;">a. Swiper组件： 打开antd-mobile的Swiper组件（信息展示）</div>
+                        <div style="text-indent: 30px;">b. 拷贝代码： 拷贝核心代码到 Home组件中</div>
+                        <div style="text-indent: 30px;">c. 存在问题： 不会自动播放 以及 从其他路径返回时，高度不够</div>
+                        <div style="text-indent: 30px;">d. 原因： 轮播图数据是动态加载的，加载完成前后轮播图数量不一致</div>
+                        <div style="text-indent: 30px;">e. 解决方案-1：  在state 中添加表示数轮播图加载完成的数据, 加载完成变成true， 满足这个条件才加载轮播图</div>
+                    </li>
+                    <li>
+                        2. 导航栏目flex布局步骤：
+                        <div style="text-indent: 30px;">a. Swiper组件： 打开antd-mobile的Grid组件</div>
+                        <div style="text-indent: 30px;">b. 拷贝代码： 拷贝核心代码到 Home组件中</div>
+                    </li>
+                    <li>
+                        3. 安装sass： 
+                        <div style="text-indent: 30px;">a. 安装： css-loader, style-loader, sass-loader, node-sass</div>
+                        <div style="text-indent: 30px;">b. 作用：将sass 文件编译成css文件</div>
+                    </li>
+                    <li>
+                        4. 顶部搜索： 
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="nine">功能-实现地理位置定位</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. h5中的地理位置api: navagator.geolocation提供经纬度
+                        <div style="text-indent: 30px;">a.谁提供的： navagator.geolocation对象提供</div>
+                        <div style="text-indent: 30px;">b. 获取：  getCurrentPosition（）方法获取</div>
+                        <div style="text-indent: 30px;" class="coding">
+                            navagator.geolocation. getCurrentPosition（ position => {<br>
+                                // position  表示当前的位置信息： 包含经度和纬度<br>
+                            }）<br>
+                        </div>
+                    </li>
+                    <li>
+                        2. 百度地图/高德地图 的 api：
+                        <div style="text-indent: 30px;">a. 开发文档/web开发/javascript api： 打开antd-mobile的Grid组件</div>
+                        <div style="text-indent: 30px;">b. 开发指南： 
+                            <div style="text-indent: 60px;">1. 申请百度账号：登录百度账号 / 注册百度账号 - 开发指南 </div>
+                            <div style="text-indent: 60px;">2. 创建ak密钥：控制台 - 应用管理 - 创建应用（类型： 浏览器） </div>
+                            <div style="text-indent: 60px;">3. 在index.html中引入百度地图api： </div>
+                            <div style="text-indent: 60px;">4. 全局样式修改： height: 100% </div>
+                            <div style="text-indent: 60px;">5. 新建地图组件：  Map.js </div>
+                            <div style="text-indent: 60px;">6. 新建map实例：  const map=new window.BMapGL.Map('container')</div>
+                            <div style="text-indent: 60px;">7. 设置中心点坐标：  const point=new window.BMapGL.Point(116.404, 39.915)</div>
+                            <div style="text-indent: 60px;">8. 初始化地图-放大地图： map.centerAndZoom(point, 11)</div>
+                        </div>
+                        <div style="text-indent: 30px;">c. 获取城市定位： 
+                            <div style="text-indent: 60px;">1. 获取ip定位：const city = new window.BMapGL.LocalCity()</div>
+                            <div style="text-indent: 60px;">2. 获取当前城市： city.get( res => { console.log(res.name )}) </div>
+                            <div style="text-indent: 60px;">3. 调用服务器接口： 获取对应城市信息</div>
+                        </div>
+                        <div style="text-indent: 30px;">d. 地址解析服务： 逆/地址解析
+                            <div style="text-indent: 60px;">1. 创建地址解析器实例：const myGeo = new window.BMapGL.Geocoder()</div>
+                            <div style="text-indent: 60px;">2. 解析结果展示在地图上： myGeo.getPoint('', function(point)) </div>
+                        </div>
+                        <div style="text-indent: 30px;">e. 文本覆盖物： 事例demo/覆盖物事例
+                            <div style="text-indent: 60px;">1. 创建Label实例对象：const label = new window.BMapGL.Label(“文本信息”， { position: point, offset: new window.BMapGL.size(-35， -35) })</div>
+                            <div style="text-indent: 60px;">2. 设置样式：  label.setStyle({}) </div>
+                            <div style="text-indent: 60px;">3. 添加到地图中：  map.addOverlay(label) </div>
+                        </div>
+                        <div style="text-indent: 30px;">f. 绘制房源覆盖物：
+                            <div style="text-indent: 60px;">1. setContent传入html： label.setContent(`<div class>结构</div>`) </div>
+                            <div style="text-indent: 60px;">2. 设置样式：  label.setStyle({}) </div>
+                            <div style="text-indent: 60px;">3. 获取点击事件：  label.addEventLisenter('click', () => {}) </div>
+                            <div style="text-indent: 60px;">3. 添加到地图中：  map.addOverlay(label) </div>
+                        </div>
+                        <div style="text-indent: 30px;">g. 点击覆盖物
+                            <div style="text-indent: 60px;">1. 放大地图 </div>
+                            <div style="text-indent: 60px;">2. 获取数据，渲染下一级覆盖物</div>
+                            <div style="text-indent: 60px;">3. 区、镇： 单机会清除现有覆盖物，创建新的覆盖物</div>
+                            <div style="text-indent: 60px;">4. 小区： 不清楚覆盖物。异动地图，展示小区的房源列表</div>
+                        </div>
+                        <div style="text-indent: 30px;">h. 渲染所有区的房源覆盖物
+                            <div style="text-indent: 60px;">1. 获取房源数据 </div>
+                            <div style="text-indent: 60px;">2. 遍历数据， 创建覆盖物， 给一个唯一标识</div>
+                            <div style="text-indent: 60px;">3. 添加点击事件， 获得唯一标识</div>
+                            <div style="text-indent: 60px;">4. 放大地图（级别变成13），用clearOverlays方法清除当前覆盖物（加一个定时器）</div>
+                        </div>
+                        <div style="text-indent: 30px;">i. 移动位置
+                            <div style="text-indent: 60px;">1. 获取点击项目 ：e.changedTouches[0]</div>
+                            <div style="text-indent: 60px;">1. 移动 ： map.panBy(x, y)</div>
+                            <div style="text-indent: 60px;">2. 垂直位置： (window.innerHeight - 330) / 2 - target.clientY</div>
+                            <div style="text-indent: 60px;">3. 水平位置： (window.innerWidth / 2 - target.clientX</div>
+                            <div style="text-indent: 60px;">4. 放大地图（级别变成13），用clearOverlays方法清除当前覆盖物（加一个定时器）</div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="ten">功能-实现城市列表</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>
+                        1. 导航栏引入： 
+                        <div style="text-indent: 30px;">a.Swiper组件： 打开antd-mobile的navbar组</div>
+                        <div style="text-indent: 30px;">b. 改变样式背景： 自己加一个className</div>
+                    </li>
+                    <li>
+                        2. 按字母展示城市：
+                        <div style="text-indent: 30px;">a. 改写数据格式： { a: [{}, {}], b: [{}], c: []...}</div>
+                        <div style="text-indent: 30px;">b. 右侧索引格式： ['a', 'b', 'c', 'd']</div>
+                        <div style="text-indent: 30px;">c. 步骤： 
+                            <div style="text-indent: 60px;">1. 遍历数据</div>
+                            <div style="text-indent: 60px;">2. 获取每个城市的首字母: const first = char.substring(0, 1)</div>
+                            <div style="text-indent: 60px;">3. 首字母按顺序排列: cityIndex.sort()</div>
+                            <div style="text-indent: 60px;">4. push 数据</div>
+                            <div style="text-indent: 60px;">5. 热门城市接口获取： hot添加到字母数组中， hot对应的数据添加到citylist中</div>
+                            <div style="text-indent: 60px;">6. 定位城市： 封装函数， utils中封装函数获取定位城市，还要判断localstorage中是否有城市及其数据</div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="eleven">优化-场列表性能优化</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 定义： 大型列表和表哥数据， 会导致页面卡顿， 大量dom节点会重绘重排 </li>
+                    <li>2. 优化方案： 懒渲染和可视区域渲染 </li>
+                    <li>
+                        3. 懒渲染：
+                        <div style="text-indent: 30px;">a. 用于场景： 移动端</div>
+                        <div style="text-indent: 30px;">b. 原理： 每次只渲染一部分， 等渲染的数据将滚动完时，再渲染下面的部分</div>
+                        <div style="text-indent: 30px;">c. 优点：速度快（1000条左右的数据）  </div>
+                        <div style="text-indent: 30px;">d. 缺点：数据量特大时，页面依旧存在大量dom, 占的内存过多，导致页面卡顿  </div>
+                    </li>
+                    <li>
+                        4. 可视区域渲染：
+                        <div style="text-indent: 30px;">a. 用于场景： 一次性展示大量数据（微博、聊天等）</div>
+                        <div style="text-indent: 30px;">b. 原理： 只渲染页面可视区域的列表项， 非可视区域数据“不渲染”（额外加载一点数据）， 滚动时动态更新</div>
+                    </li>
+                    <li>
+                        5. 可视区域渲染：react-virtualized: 高效渲染大量数据
+                        <div style="text-indent: 30px;">a. 安装：  yarn add react-virtualized</div>
+                        <div style="text-indent: 30px;">b. 入口导入： import ' react-virtualized/style.css'</div>
+                        <div style="text-indent: 30px;">c. list组件占满屏幕： 导入AutoSizer组件： 拿到暴露出来的height和width, 设置在上面</div>
+                        <div style="text-indent: 30px;">d. 右侧索引： 点击高亮， 城市列表滚动-对应的城市高亮</div>
+                        <div style="text-indent: 60px;">1. List组件 的 onRowsRendered: 滚动时，拿到页面中渲染行的信息（startIndex）</div>
+                        <div style="text-indent: 60px;">2. 点击时： 滚动到对应城市： 调用scrollToRow方法，用于安全滚动到指定位置（必须可见的，出现过就成）</div>
+                        <div style="text-indent: 60px;">3. 设置List组件scrollToAlignment 配置项为start， 保证被点击出现在页面顶部</div>
+                        <div style="text-indent: 60px;">4. 索引无法正确定位时， 用list组件measureAllRows ，提前计算所有行高度，让scrollToRow方法精确跳转</div>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="twelve">组件化 - 顶部导航栏组件化</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 公共代码提取</li>
+                    <li>2. 添加prop-types校验 </li>
+                    <li>3. 事件属性值的传递</li>
+                </ul>
+            </article>
+            <article>
+                <h4 class="detail-title">
+                    <span id="thirteen">组件化 - 组件间-样式覆盖的问题-CSS IN JS</span>
+                </h4>
+                <ul class="ul-detail">
+                    <li>1. 原因： 代码执行，加载到同一个项目中， 同名的样式就会相互影响</li>
+                    <li>2. 解决方式1： 手动处理-取不同的类名 </li>
+                    <li>3. 解决方式2: CSS IN JS</li>
+                    <li>4. CSS IN JS: 用js 编写css的统称，解决css样式冲突，覆盖的问题
+                        <div style="text-indent: 30px;">
+                            a. CSS Modules: 推荐-react脚手架已经集成，可以直接使用
+                            <div style="text-indent: 60px;">1. 定义对CSS类名重命名（局部作用域）</div>
+                            <div style="text-indent: 60px;">2. 实现方式：webpack的css-loader: 类名变成全局唯一的名字 </div>
+                            <div style="text-indent: 60px;">3. 命名方式：BEM（block, element, modifier）; react中： filename_classname_hash-指定classname就成</div>
+                            <div style="text-indent: 60px;">4. 使用：首先-创建[name].module.css； 其次-导入该样式文件； 最后-通过style.样式名，设置样式</div>
+                            <div style="text-indent: 60px;" class="coding">
+                                import styles from './index.module.css'; // css module导入 <br>
+                                // 注意： 写法-单个类名设置样式， 不使用嵌套
+                                // 注意： 组件库已有的全局样式： 需要使用 ：global来指定 :global(.am-navbar-title)
+                            </div>
+                        </div>
+                        <div style="text-indent: 30px;">
+                            b. style-component
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+</body>
+<script>
+    var isTop = document.getElementById('is-top')
+    isTop.addEventListener("click", function() {
+        window.scrollTo(0, 0)
+    })
+</script>
+</html>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2022/10/11/react基础/" data-toggle="tooltip" data-placement="top" title="react 基础">&larr; 上一页</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2022/10/10/vue 动态路由的实现/" data-toggle="tooltip" data-placement="top" title="">下一页 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端开发" title="前端开发">前端开发</a>
+                        
+                          <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">lsm&#39;s Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react项目启动/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2022/10/11/react项目启动/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    
+    <!-- pagination -->
+    <!-- <ul class="pager">
+    
+        <li class="previous"><a href="/">&larr;  next</a></li>
+    
+    
+        <li class="next"><a href="/">prev  &rarr;</a></li>
+    
+</ul>
+ -->
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Sarah匆匆">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/MsAbby">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; MsAbby&#39;s Blog 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kaijun.rocks/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+   
+
+
+<!-- Image to hack wechat -->
+<img src="http://kaijun.rocks/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
